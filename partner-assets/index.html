@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex, nofollow" /> <title>Secure Download | OPTILINE Partner Program</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #0a0a1a;
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        position: relative;
+        overflow-x: hidden;
+      }
+      .background-dots {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .dot {
+        position: absolute;
+        background-color: #8a2be2;
+        border-radius: 50%;
+        opacity: 0.15;
+        animation: float 12s ease-in-out infinite alternate;
+        box-shadow: 0 0 15px #8a2be2;
+      }
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 0.1;
+        }
+        50% {
+          transform: translate(30px, -30px) scale(1.2);
+          opacity: 0.2;
+        }
+        100% {
+          transform: translate(-20px, -40px) scale(0.9);
+          opacity: 0.15;
+        }
+      }
+      .container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 560px;
+      }
+      .card {
+        background: rgba(18, 8, 47, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        border-radius: 32px;
+        padding: clamp(24px, 6vw, 48px) clamp(20px, 5vw, 40px);
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.5),
+          0 0 30px rgba(138, 43, 226, 0.2);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+      .card:hover {
+        border-color: #a45eff;
+        box-shadow:
+          0 30px 60px rgba(138, 43, 226, 0.3),
+          0 0 40px rgba(164, 94, 255, 0.3);
+        transform: translateY(-5px);
+      }
+      .logo {
+        margin-bottom: clamp(20px, 5vw, 32px);
+      }
+      .logo img {
+        max-width: 180px;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.5));
+      }
+      .icon-wrapper {
+        width: clamp(70px, 15vw, 90px);
+        height: clamp(70px, 15vw, 90px);
+        margin: 0 auto clamp(16px, 4vw, 24px);
+        background: rgba(138, 43, 226, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #a45eff;
+        box-shadow: 0 0 30px rgba(164, 94, 255, 0.3);
+      }
+      .icon-wrapper i {
+        font-size: clamp(28px, 6vw, 40px);
+        color: #a45eff;
+        filter: drop-shadow(0 0 10px rgba(164, 94, 255, 0.5));
+      }
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(20px, 5vw, 28px);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: clamp(12px, 3vw, 16px);
+        background: linear-gradient(135deg, #ffffff 0%, #a45eff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(164, 94, 255, 0.3);
+      }
+      .status-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(138, 43, 226, 0.2);
+        border-radius: 24px;
+        padding: clamp(20px, 5vw, 28px);
+        margin: clamp(20px, 5vw, 28px) 0;
+        transition: all 0.3s ease;
+      }
+      .status-icon {
+        font-size: clamp(48px, 12vw, 64px);
+        margin-bottom: clamp(8px, 2vw, 12px);
+      }
+      .status-title {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(18px, 4.5vw, 22px);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .status-message {
+        color: #c0c0d0;
+        font-size: clamp(14px, 3.5vw, 16px);
+        line-height: 1.6;
+        margin-bottom: 16px;
+        word-break: break-word;
+      }
+      .file-info {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 16px;
+        padding: clamp(12px, 3vw, 16px);
+        margin: 16px 0;
+        border: 1px solid rgba(164, 94, 255, 0.2);
+      }
+      .file-name {
+        color: #a45eff;
+        font-weight: 600;
+        font-size: clamp(16px, 4vw, 18px);
+        margin-bottom: 4px;
+        word-break: break-word;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .file-name i {
+        font-size: clamp(14px, 3.5vw, 16px);
+      }
+      .file-size {
+        color: #888;
+        font-size: clamp(12px, 3vw, 14px);
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(45deg, #8a2be2, #a45eff);
+        color: white;
+        border: none;
+        padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 35px);
+        border-radius: 50px;
+        font-size: clamp(14px, 3.5vw, 16px);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+        margin: 8px 4px;
+        width: auto;
+        min-width: 200px;
+      }
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(138, 43, 226, 0.6);
+      }
+      .button.outline {
+        background: transparent;
+        border: 2px solid #a45eff;
+        box-shadow: none;
+      }
+      .button.outline:hover {
+        background: rgba(164, 94, 255, 0.1);
+        box-shadow: 0 0 20px rgba(164, 94, 255, 0.3);
+      }
+      .button i {
+        font-size: clamp(14px, 3.5vw, 18px);
+      }
+      .error .status-icon {
+        color: #ff4d4d;
+      }
+      .error .status-title {
+        color: #ff4d4d;
+      }
+      .success .status-icon {
+        color: #a45eff;
+      }
+      .success .status-title {
+        color: #a45eff;
+      }
+      .loader {
+        width: clamp(40px, 10vw, 50px);
+        height: clamp(40px, 10vw, 50px);
+        border: 3px solid rgba(138, 43, 226, 0.1);
+        border-radius: 50%;
+        border-top-color: #a45eff;
+        animation: spin 1s ease-in-out infinite;
+        margin: 16px auto;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .footer-links {
+        margin-top: clamp(20px, 5vw, 32px);
+        display: flex;
+        gap: clamp(12px, 3vw, 20px);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: #a45eff;
+        text-decoration: none;
+        font-size: clamp(12px, 3vw, 14px);
+        transition: color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .footer-links a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      @media (max-width: 480px) {
+        body {
+          padding: 12px;
+        }
+        .button {
+          width: 100%;
+        }
+        .footer-links {
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-links a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+      @media (min-width: 481px) and (max-width: 768px) {
+        .button {
+          min-width: 180px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 600px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-dots">
+      <div
+        class="dot"
+        style="
+          left: 5%;
+          top: 15%;
+          width: 12px;
+          height: 12px;
+          animation-duration: 7s;
+          animation-delay: 0s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 85%;
+          top: 20%;
+          width: 18px;
+          height: 18px;
+          animation-duration: 9s;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 25%;
+          top: 75%;
+          width: 20px;
+          height: 20px;
+          animation-duration: 11s;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 65%;
+          top: 85%;
+          width: 14px;
+          height: 14px;
+          animation-duration: 8s;
+          animation-delay: 0.5s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 45%;
+          top: 35%;
+          width: 22px;
+          height: 22px;
+          animation-duration: 10s;
+          animation-delay: 1.5s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 75%;
+          top: 55%;
+          width: 16px;
+          height: 16px;
+          animation-duration: 12s;
+          animation-delay: 0.8s;
+        "
+      ></div>
+      <div
+        class="dot"
+        style="
+          left: 15%;
+          top: 45%;
+          width: 10px;
+          height: 10px;
+          animation-duration: 9.5s;
+          animation-delay: 2.2s;
+        "
+      ></div>
+    </div>
+    <div class="container">
+      <div class="card">
+        <div class="logo">
+          <a
+            href="/"
+            style="
+              display: inline-block;
+              text-decoration: none;
+              transition: transform 0.3s ease;
+            "
+            onmouseover="this.style.transform = 'scale(1.05)'"
+            onmouseout="this.style.transform = 'scale(1)'"
+          >
+            <img
+              src="/assets/imgs/optiline-logo.webp"
+              alt="OPTILINE"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+            />
+          </a>
+        </div>
+        <div id="content">
+          <div class="icon-wrapper">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h1>Secure Download Center</h1>
+          <div id="statusContainer" class="status-box">
+            <div class="loader"></div>
+            <div class="status-message">Verifying access privileges...</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="/"><i class="fas fa-home"></i> Home</a>
+          <a href="/contact/"><i class="fas fa-headset"></i> Support</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const SESSION_KEY = "optiline_psp_session";
+      const SESSION_TIMEOUT = 30 * 60 * 1000;
+      const FILE_MAP = {
+        file1001: {
+          name: "Manifesto & Pitch Deck",
+          path: "/assets/docs/OPTILINE_Manifesto_PitchDeck.pdf",
+          size: "337 KB",
+        },
+        file11100: {
+          name: "Outreach Playbook",
+          path: "/assets/docs/OPTILINE_Outreach_Playbook.pdf",
+          size: "500 KB",
+        },
+        file101001: {
+          name: "Closing Guide",
+          path: "/assets/docs/OPTILINE_Closing_Guide.pdf",
+          size: "438 KB",
+        },
+      };
+      function getParameterByName(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+      function updateUI(status, data = {}) {
+        const container = document.getElementById("statusContainer");
+        if (status === "loading") {
+          container.className = "status-box";
+          container.innerHTML = `
+          <div class="loader"></div>
+          <div class="status-message">Verifying access privileges...</div>
+        `;
+        } else if (status === "error") {
+          container.className = "status-box error";
+          container.innerHTML = `
+          <div class="status-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="status-title">Access Denied</div>
+          <div class="status-message">${data.message || "You do not have permission to access this file."}</div>
+          <a href="/psp/" class="button outline">
+            <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+          </a>
+        `;
+        } else if (status === "success") {
+          container.className = "status-box success";
+          container.innerHTML = `
+          <div class="status-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="status-title">Download Ready</div>
+          <div class="status-message">Your file has been verified and is ready for download.</div>
+          <div class="file-info">
+            <div class="file-name"><i class="fas fa-file-pdf"></i>${data.fileInfo.name}</div>
+            <div class="file-size">${data.fileInfo.size}</div>
+          </div>
+          <a href="${data.fileInfo.path}" download class="button" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-download"></i> Download Now
+          </a>
+          <a href="/psp/" class="button outline">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        `;
+        }
+      }
+      function validateSession() {
+        const sessionData = localStorage.getItem(SESSION_KEY);
+        if (!sessionData) {
+          return {
+            valid: false,
+            message: "No active session found. Please login first.",
+          };
+        }
+        try {
+          const parsed = JSON.parse(sessionData);
+          const now = Date.now();
+          if (now - parsed.lastActivity > SESSION_TIMEOUT) {
+            localStorage.removeItem(SESSION_KEY);
+            return {
+              valid: false,
+              message: "Your session has expired. Please login again.",
+            };
+          }
+          parsed.lastActivity = now;
+          localStorage.setItem(SESSION_KEY, JSON.stringify(parsed));
+          const urlToken = getParameterByName("token");
+          if (urlToken && urlToken !== parsed.data.partnerId) {
+            return { valid: false, message: "Invalid access token." };
+          }
+          return { valid: true, session: parsed };
+        } catch (e) {
+          return {
+            valid: false,
+            message: "Session data corrupted. Please login again.",
+          };
+        }
+      }
+      function init() {
+        const fileKey = getParameterByName("file");
+        updateUI("loading");
+        if (!fileKey) {
+          updateUI("error", {
+            message: "No file specified. URL must include file name",
+          });
+          return;
+        }
+        if (!FILE_MAP[fileKey]) {
+          updateUI("error", {
+            message: `Invalid file "${fileKey}". Available files: manifesto, outreach, closing`,
+          });
+          return;
+        }
+        const sessionCheck = validateSession();
+        if (!sessionCheck.valid) {
+          updateUI("error", { message: sessionCheck.message });
+          return;
+        }
+        updateUI("success", { fileInfo: FILE_MAP[fileKey] });
+      }
+      init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

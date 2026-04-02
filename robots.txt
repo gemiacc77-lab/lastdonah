@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Sitemap: https://optiline.online/sitemap.xml
+# Disallow Project Brief Pages 
+Disallow: /project-submit-*
+User-agent: *
+Allow: /
+Sitemap: https://optiline.online/sitemap.xml
+
+# Disallow Project Brief Pages 
+Disallow: /project-submit-*
+
+# Disallow Private Pages
+Disallow: /withdraw/
+Disallow: /partner-assets/

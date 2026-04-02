@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTILINE Marketer Success Kit</title>
+    <meta name="author" content="OPTILINE Agency">
+    <meta name="subject" content="Partner Success Program Documentation">
+    <meta name="copyright" content="OPTILINE Agency © 2026">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body::after {
+            content: "OPTILINE PSP";
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 90pt;
+            color: rgba(0, 0, 0, 0.03); 
+            z-index: -1;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #1a1a2e;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @page {
+            size: A4;
+            margin: 1.2cm 1cm 1.2cm 1cm;
+            @top-center { content: string(doctitle); font-size: 8pt; color: #666; }
+            @bottom-left { content: "OPTILINE Agency © 2026"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+            @bottom-center { content: "Page " counter(page); font-size: 8pt; color: #666; font-family: 'Inter', sans-serif; }
+            @bottom-right { content: "Confidential & Proprietary"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+        }
+        
+        @page :first {
+            margin: 0;
+            @top-center { content: none; }
+            @bottom-center { content: none; }
+        }
+        
+        @page cover { 
+            margin: 0;
+            @top-center { content: none; } 
+            @bottom-center { content: none; } 
+        }
+        
+        @page toc { 
+            @top-center { content: none; } 
+            @bottom-center { content: none; } 
+        }
+        
+        body { string-set: doctitle ""; }
+        h1 { string-set: doctitle content(); }
+        
+        /* Cover Page - Solid Background */
+        .cover {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            page: cover;
+            page-break-after: always;
+            break-after: page;
+            background-color: #2D0B50; 
+        }
+        
+        .cover-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #8a2be2, #9D4EDD, #8a2be2);
+        }
+        
+        .cover-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 85%;
+            z-index: 10;
+        }
+        
+        .cover-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 60pt;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8a2be2, #9D4EDD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5cm;
+            letter-spacing: 4px;
+        }
+        
+        .cover-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20pt;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.3cm;
+            letter-spacing: 2px;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 13pt;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2cm;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 0.4cm 1.2cm;
+            border: 2px solid rgba(138,43,226,0.5);
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11pt;
+            color: #8a2be2;
+            letter-spacing: 2px;
+            margin-bottom: 2cm;
+        }
+        
+        .cover-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            color: rgba(255,255,255,0.5);
+            line-height: 2;
+        }
+        .cover-meta p {
+        text-align: center !important;
+        text-align-last: center !important;
+        }
+        
+        .cover-footer {
+            position: absolute;
+            bottom: 2cm;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .cover-version {
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* Table of Contents */
+        .toc-page {
+            page: toc;
+            page-break-after: always;
+            break-after: page;
+        }
+        
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.6cm;
+            padding-bottom: 0.2cm;
+            border-bottom: 3px solid #8a2be2;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .toc {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.25cm;
+            font-size: 10pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .toc a {
+            color: #1a1a2e;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .toc a::after {
+            content: leader('.') target-counter(attr(href url), page);
+        }
+        
+        .toc-section {
+            font-weight: 600;
+            color: #16213e;
+        }
+        
+        .toc-subsection {
+            padding-left: 0.8cm;
+            font-weight: 400;
+            color: #444;
+        }
+        
+        /* Content Styles */
+        .content {
+            padding-top: 0.2cm;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.5cm;
+            margin-bottom: 0.3cm;
+            padding-bottom: 0.15cm;
+            border-bottom: 2px solid #8a2be2;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #16213e;
+            margin-top: 0.4cm;
+            margin-bottom: 0.2cm;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 10.5pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.3cm;
+            margin-bottom: 0.15cm;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            font-weight: 600;
+            color: #16213e;
+            margin-top: 0.25cm;
+            margin-bottom: 0.1cm;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin-bottom: 0.2cm;
+            text-align: justify;
+            text-align-last: left;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        ul, ol {
+            margin-left: 0.6cm;
+            margin-bottom: 0.3cm;
+        }
+        
+        li {
+            margin-bottom: 0.1cm;
+            orphans: 2;
+            widows: 2;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin: 0.3cm 0;
+            font-size: 9pt;
+            break-inside: auto;
+            page-break-inside: auto;
+        }
+        
+        thead {
+            display: table-header-group;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1a1a3e, #16213e);
+            color: white;
+            padding: 0.2cm 0.25cm;
+            text-align: left;
+            font-size: 8pt;
+            letter-spacing: 0.5px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        td {
+            padding: 0.15cm 0.2cm;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        tr {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Persona Card */
+        .persona-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 4px solid #8a2be2;
+            padding: 0.35cm;
+            margin: 0.3cm 0;
+            border-radius: 0 8px 8px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .persona-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #16213e;
+            margin-bottom: 0.2cm;
+            font-size: 11pt;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .persona-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #8a2be2, #9D4EDD);
+            color: white;
+            padding: 0.08cm 0.3cm;
+            border-radius: 12px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            margin-right: 0.15cm;
+            margin-bottom: 0.1cm;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            border-left: 4px solid #9D4EDD;
+            padding: 0.3cm;
+            margin: 0.3cm 0;
+            border-radius: 0 8px 8px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .highlight-box-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #16213e;
+            margin-bottom: 0.15cm;
+            font-size: 9pt;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        /* Success Box */
+        .success-box {
+            background: linear-gradient(135deg, #f0fff4, #e6ffed);
+            border-left: 4px solid #38a169;
+            padding: 0.3cm;
+            margin: 0.3cm 0;
+            border-radius: 0 8px 8px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-left: 4px solid #e53e3e;
+            padding: 0.3cm;
+            margin: 0.3cm 0;
+            border-radius: 0 8px 8px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+            border-left: 4px solid #8a2be2;
+            padding: 0.3cm;
+            margin: 0.3cm 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #4a5568;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Response Box */
+        .response-box {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            border: 1px solid #e2e8f0;
+            padding: 0.3cm;
+            margin: 0.25cm 0;
+            border-radius: 8px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .response-label {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #8a2be2;
+            font-size: 8.5pt;
+            margin-bottom: 0.15cm;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        /* Package Card */
+        .package-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #9D4EDD;
+            padding: 0.35cm;
+            margin: 0.3cm 0;
+            border-radius: 8px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .package-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #16213e;
+            margin-bottom: 0.15cm;
+            font-size: 12pt;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .package-price {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #9D4EDD;
+            font-size: 14pt;
+        }
+        
+        .package-commission {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #8a2be2;
+            font-size: 10pt;
+        }
+        
+        /* Commission Highlight */
+        .commission-highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #9D4EDD;
+            font-size: 11pt;
+        }
+        
+        /* Links */
+        a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+        
+        /* Figure */
+        figure {
+            margin: 0.3cm 0;
+            text-align: center;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        figure img {
+            max-width: 100%;
+            max-height: 30vh;
+            height: auto;
+        }
+        
+        figcaption {
+            font-size: 8pt;
+            color: #666;
+            margin-top: 0.1cm;
+            font-style: italic;
+        }
+        
+        figcaption::before {
+            content: attr(data-label) ": ";
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        /* Checkmark */
+        .check {
+            color: #38a169;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+        
+        /* Week Box */
+        .week-box {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            padding: 0.25cm;
+            margin: 0.2cm 0;
+            border-radius: 6px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .week-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #16213e;
+            font-size: 9pt;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        /* Prevent overflow */
+        pre, table, figure, img, svg, blockquote {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        a { word-break: break-all; }
+        
+        /* Page break */
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+        
+        /* Support Contact */
+        .support-contact {
+            background: linear-gradient(135deg, #1a1a3e, #16213e);
+            color: white;
+            padding: 0.3cm;
+            border-radius: 8px;
+            margin: 0.2cm 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .support-contact a {
+            color: #9D4EDD;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <div class="cover-accent"></div>
+        <div class="cover-grid"></div>
+        <div class="cover-content">
+            <div class="cover-logo">OPTILINE</div>
+            <div class="cover-title">Marketer Success Kit</div>
+            <div class="cover-subtitle">Your Complete Guide to Selling Digital Growth Assets</div>
+            <div class="cover-badge">PARTNER RESOURCES</div>
+            <div class="cover-meta">
+                <p>Proven Strategies | Ready-Made Content | Insider Knowledge</p>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <div class="cover-version">Confidential - For Authorized Partners Only</div>
+        </div>
+    </div>
+
+    <div class="toc-page">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul class="toc">
+            <li class="toc-section"><a href="#welcome">Welcome to the OPTILINE Partner Network</a></li>
+            <li class="toc-section"><a href="#part1">Part 1: Understanding Your Ideal Customers</a></li>
+            <li class="toc-subsection"><a href="#personas">Buyer Personas</a></li>
+            <li class="toc-section"><a href="#part2">Part 2: Service Packages Explained</a></li>
+            <li class="toc-subsection"><a href="#packages">Package Breakdown</a></li>
+            <li class="toc-section"><a href="#part3">Part 3: Objection Handling</a></li>
+            <li class="toc-subsection"><a href="#objections">Common Objections & Responses</a></li>
+            <li class="toc-section"><a href="#part4">Part 4: Closing Strategies</a></li>
+            <li class="toc-section"><a href="#part5">Part 5: Marketing Materials & Talking Points</a></li>
+            <li class="toc-section"><a href="#part6">Part 6: Tracking Your Success</a></li>
+            <li class="toc-section"><a href="#part7">Part 7: Frequently Asked Questions</a></li>
+            <li class="toc-section"><a href="#part8">Part 8: Your Success Playbook</a></li>
+            <li class="toc-section"><a href="#part9">Part 9: Resources and Support</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 id="welcome">Welcome to the OPTILINE Partner Network</h1>
+        <p>This comprehensive guide equips you with everything you need to successfully market OPTILINE's Done-For-You Digital Asset services. Whether you're a freelancer, agency owner, or digital entrepreneur, this kit provides proven strategies, ready-made content, and insider knowledge to close deals faster.</p>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Quick Access Links</div>
+            <p><a href="https://optiline.online/psp">PSP Network Portal</a></p>
+        </div>
+
+        <h1 id="part1">Part 1: Understanding Your Ideal Customers</h1>
+        <h2 id="personas">Buyer Personas: Who Are You Selling To?</h2>
+        <p>Success starts with understanding who needs OPTILINE's services. Here are the primary customer segments:</p>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_4_buyer_personas.png" alt="Buyer Personas Distribution">
+            <figcaption data-label="Figure 1">Target Market Distribution by Buyer Persona</figcaption>
+        </figure>
+
+        <div class="persona-card">
+            <div class="persona-title">Persona 1: The Ambitious Startup Founder</div>
+            <p><span class="persona-tag">Age: 25-40</span> <span class="persona-tag">Budget: $800-$2,000</span></p>
+            <p><strong>Background:</strong> Tech-savvy entrepreneur launching a SaaS or digital product</p>
+            <p><strong>Pain Points:</strong> Limited budget, needs professional branding quickly, no time for design</p>
+            <p><strong>Motivation:</strong> Wants to appear established and professional to attract investors and customers</p>
+            <p><strong>Why They Buy:</strong> They need a complete brand identity fast to launch their product and impress stakeholders.</p>
+            <p><strong>Best Approach:</strong> Emphasize speed, professionalism, and the psychological impact of strong branding on investor confidence.</p>
+        </div>
+
+        <div class="persona-card">
+            <div class="persona-title">Persona 2: The E-Commerce Entrepreneur</div>
+            <p><span class="persona-tag">Age: 30-50</span> <span class="persona-tag">Budget: $1,200-$2,000</span></p>
+            <p><strong>Background:</strong> Shopify store owner, Amazon seller, or marketplace vendor</p>
+            <p><strong>Pain Points:</strong> Struggling with product visibility, inconsistent branding across platforms, low conversion rates</p>
+            <p><strong>Motivation:</strong> Wants to stand out from competitors and increase sales</p>
+            <p><strong>Why They Buy:</strong> They understand that professional branding directly impacts sales and customer trust.</p>
+            <p><strong>Best Approach:</strong> Use case studies showing revenue increases from better branding and content strategy. Highlight the NEXUS and MATRIX packs.</p>
+        </div>
+
+        <div class="persona-card">
+            <div class="persona-title">Persona 3: The Service-Based Professional</div>
+            <p><span class="persona-tag">Age: 35-55</span> <span class="persona-tag">Budget: $1,400-$1,800</span></p>
+            <p><strong>Background:</strong> Life coach, business consultant, fitness trainer, or course creator</p>
+            <p><strong>Pain Points:</strong> Needs consistent content for social media, wants to build authority, limited design skills</p>
+            <p><strong>Motivation:</strong> Building personal brand and recurring revenue through online presence</p>
+            <p><strong>Why They Buy:</strong> They recognize that consistent, professional content is essential for building authority and attracting clients.</p>
+            <p><strong>Best Approach:</strong> Emphasize the Monthly Content Packs and how consistent posting builds audience trust.</p>
+        </div>
+
+        <div class="persona-card">
+            <div class="persona-title">Persona 4: The Corporate Marketing Manager</div>
+            <p><span class="persona-tag">Age: 30-45</span> <span class="persona-tag">Budget: $1,500-$2,000</span></p>
+            <p><strong>Background:</strong> Mid-size company employee managing marketing or social media</p>
+            <p><strong>Pain Points:</strong> Overwhelmed with content creation, limited agency budget, needs quick turnarounds</p>
+            <p><strong>Motivation:</strong> Wants to deliver results to leadership without overworking the team</p>
+            <p><strong>Why They Buy:</strong> They need to show ROI and results to their leadership without hiring expensive agencies.</p>
+            <p><strong>Best Approach:</strong> Emphasize efficiency, cost savings vs. traditional agencies, and the ability to deliver professional results quickly.</p>
+        </div>
+
+        <div class="persona-card">
+            <div class="persona-title">Persona 5: The Local Business Owner</div>
+            <p><span class="persona-tag">Age: 40-60</span> <span class="persona-tag">Budget: $800-$1,200</span></p>
+            <p><strong>Background:</strong> Restaurant, salon, gym, or retail store owner</p>
+            <p><strong>Pain Points:</strong> Doesn't understand digital marketing, wants more foot traffic, skeptical of online advertising</p>
+            <p><strong>Motivation:</strong> Growing local customer base and competing with larger chains</p>
+            <p><strong>Why They Buy:</strong> They see competitors with professional branding and want the same credibility.</p>
+            <p><strong>Best Approach:</strong> Show local success stories. Explain how professional branding increases perceived value and customer loyalty.</p>
+        </div>
+
+        <h3>Quick Reference: Buyer Persona Matching</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Best Package</th>
+                    <th>Key Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Startup Founder</td><td>CORE PACK</td><td>Speed + Professionalism</td></tr>
+                <tr><td>E-Commerce Owner</td><td>MATRIX PACK</td><td>Sales Increase + Consistency</td></tr>
+                <tr><td>Service Professional</td><td>NEXUS PACK</td><td>Authority Building + Content</td></tr>
+                <tr><td>Corporate Manager</td><td>MATRIX PACK</td><td>Efficiency + ROI</td></tr>
+                <tr><td>Local Business Owner</td><td>CORE PACK</td><td>Credibility + Growth</td></tr>
+            </tbody>
+        </table>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_7_package_selection.png" alt="Package Selection by Business Type">
+            <figcaption data-label="Figure 2">Recommended Package Distribution by Business Type</figcaption>
+        </figure>
+
+        <h1 id="part2">Part 2: Service Packages Explained</h1>
+        <h2 id="packages">Understanding the Package Structure</h2>
+        <p>OPTILINE offers three distinct packages. It's crucial that you understand exactly what each includes so you can match the right package to each client's needs.</p>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_2_features_comparison.png" alt="Features Comparison">
+            <figcaption data-label="Figure 3">OPTILINE Package Features Comparison</figcaption>
+        </figure>
+
+        <div class="package-card">
+            <div class="package-title">CORE PACK</div>
+            <div class="package-price">$799</div>
+            <div class="package-commission">Your Commission: $100</div>
+            <p><strong>Perfect for:</strong> Businesses starting their brand journey</p>
+            <p><strong>Includes:</strong></p>
+            <ul>
+                <li>Primary and secondary logos (3 concepts, 2 revision rounds)</li>
+                <li>Psychology-driven color palette (5-7 colors with usage guidelines)</li>
+                <li>Comprehensive font system (display + body fonts with hierarchy)</li>
+                <li>Detailed Brand Guidelines (20-30 pages)</li>
+                <li>All files in multiple formats (PNG, SVG, PDF, AI)</li>
+            </ul>
+            <p><strong>Delivery Timeline:</strong> 7-10 business days</p>
+            <p><strong>Best For:</strong> Startups, solopreneurs, new service providers</p>
+            <div class="quote-box">"I needed a professional brand quickly without breaking the bank."</div>
+        </div>
+
+        <div class="package-card">
+            <div class="package-title">NEXUS PACK</div>
+            <div class="package-price">$1,399</div>
+            <div class="package-commission">Your Commission: $150</div>
+            <p><strong>Perfect for:</strong> Businesses scaling their presence</p>
+            <p><strong>Includes:</strong></p>
+            <ul>
+                <li>Everything in CORE PACK (Brand Kit Identity)</li>
+                <li>PLUS Monthly Content Packs (30 posts per month)</li>
+                <li>Social media designs (Instagram, Facebook, LinkedIn, TikTok optimized)</li>
+                <li>Video scripts and captions</li>
+                <li>Content calendar and hashtag strategy</li>
+                <li>2 months of content (60 posts total)</li>
+            </ul>
+            <p><strong>Delivery Timeline:</strong> 14-21 business days</p>
+            <p><strong>Best For:</strong> E-commerce owners, coaches, consultants building social presence</p>
+            <div class="quote-box">"I finally have professional content that I can post consistently without spending hours designing."</div>
+        </div>
+
+        <div class="package-card">
+            <div class="package-title">MATRIX PACK</div>
+            <div class="package-price">$1,799</div>
+            <div class="package-commission">Your Commission: $200</div>
+            <p><strong>Perfect for:</strong> Businesses ready for aggressive growth</p>
+            <p><strong>Includes:</strong></p>
+            <ul>
+                <li>Everything in NEXUS PACK (Brand Kit + Monthly Content)</li>
+                <li>PLUS Ad Launchpad (Engineered advertising campaigns)</li>
+                <li>Audience research and targeting strategy</li>
+                <li>3-6 high-converting ad creatives</li>
+                <li>Compelling ad copy for each creative</li>
+                <li>Full Pixel & Event Setup (Facebook/Instagram/Google)</li>
+                <li>Ad performance optimization framework</li>
+            </ul>
+            <p><strong>Delivery Timeline:</strong> 14-21 business days</p>
+            <p><strong>Best For:</strong> E-commerce stores, agencies, businesses with advertising budget</p>
+            <div class="quote-box">"This is the complete solution. We got our brand, content, and ads all aligned perfectly."</div>
+        </div>
+
+        <h3>Visual Package Comparison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>CORE</th>
+                    <th>NEXUS</th>
+                    <th>MATRIX</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Brand Kit Identity</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Logo Design</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Color Palette</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Font System</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Brand Guidelines</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Monthly Content (30 posts)</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Video Scripts</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Content Calendar</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td></tr>
+                <tr><td>Ad Launchpad</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td></tr>
+                <tr><td>Audience Research</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td></tr>
+                <tr><td>Ad Creatives (3-6)</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td></tr>
+                <tr><td>Pixel Setup</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td></tr>
+                <tr><td>Price</td><td><strong>$799</strong></td><td><strong>$1,399</strong></td><td><strong>$1,799</strong></td></tr>
+                <tr><td>Commission</td><td class="commission-highlight">$100</td><td class="commission-highlight">$150</td><td class="commission-highlight">$200</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="part3">Part 3: Objection Handling - Ready-Made Responses</h1>
+        <h2 id="objections">Common Objections and Proven Responses</h2>
+
+        <h3>Objection 1: "That's Too Expensive. I Can Use Canva for Free."</h3>
+        <p><strong>Why They Say This:</strong> Clients don't understand the difference between DIY tools and professional design.</p>
+        <div class="response-box">
+            <div class="response-label">YOUR RESPONSE:</div>
+            <p>"I understand the concern about cost. Here's the difference: Canva gives you templates, but OPTILINE gives you a custom, strategic brand built specifically for your business. A $799 brand is a one-time investment that you'll use for years. Compare that to a traditional agency that charges $3,000-$5,000 for the same work, or $500/month in retainer fees. Plus, with OPTILINE, you own everything—no ongoing subscriptions. Think of it as buying a professional suit vs. renting one. You wear it forever."</p>
+        </div>
+        <p><strong>Follow-up:</strong> "Can I show you a case study of a business like yours that invested in professional branding and saw a 30% increase in customer inquiries?"</p>
+
+        <h3>Objection 2: "The MATRIX Pack is Too Expensive. Why Do I Need Ads?"</h3>
+        <p><strong>Why They Say This:</strong> They see ads as optional or don't understand ROI.</p>
+        <div class="response-box">
+            <div class="response-label">YOUR RESPONSE:</div>
+            <p>"Great question. Here's the reality: You can have the most beautiful brand in the world, but if nobody sees it, it doesn't matter. The MATRIX Pack includes Ad Launchpad—which means we don't just build your brand, we put it in front of your ideal customers with high-converting ads. For e-commerce, this typically generates 3-5x ROI on the investment. So that $1,799 investment often pays for itself in the first month through increased sales."</p>
+        </div>
+
+        <h3>Objection 3: "I'm Not Sure About the 14-21 Day Timeline. I Need This Faster."</h3>
+        <div class="response-box">
+            <div class="response-label">YOUR RESPONSE:</div>
+            <p>"I hear you on urgency. Here's the thing: The 14-21 day timeline includes strategy, custom design, revisions, and perfection. If we rushed it, you'd get a mediocre brand that doesn't serve your business. That said, CORE Pack can be delivered in 7-10 days because it's more focused. Quality takes time, but it's worth the wait."</p>
+        </div>
+
+        <h3>Objection 4: "I'm Not Sure If This Is Worth It. Can You Guarantee Results?"</h3>
+        <div class="response-box">
+            <div class="response-label">YOUR RESPONSE:</div>
+            <p>"I can't guarantee specific sales numbers because that depends on many factors—your market, your product, your pricing. What I can guarantee is this: You'll have a professional, strategic brand that positions you as a credible authority in your space. That's proven to increase customer trust and willingness to buy."</p>
+        </div>
+
+        <h3>Objection 5: "I Already Have a Logo. Why Do I Need a Full Brand Kit?"</h3>
+        <div class="response-box">
+            <div class="response-label">YOUR RESPONSE:</div>
+            <p>"A logo is just one piece. A complete Brand Kit is the entire system: logo, colors, fonts, tone of voice, and guidelines. Think of it like this: A logo is the face, but the Brand Kit is the entire personality. Without the full system, your brand looks inconsistent across platforms."</p>
+        </div>
+
+        <h3>Objection Handling Cheat Sheet</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Objection</th>
+                    <th>Key Response</th>
+                    <th>Next Step</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>"Too expensive"</td><td>Compare to traditional agencies + ROI</td><td>Show case studies</td></tr>
+                <tr><td>"MATRIX is too much"</td><td>Explain customer acquisition cost</td><td>Discuss ROI</td></tr>
+                <tr><td>"Timeline too long"</td><td>Quality takes time</td><td>Work backward from deadline</td></tr>
+                <tr><td>"No guarantee"</td><td>Guarantee professionalism, not sales</td><td>Define success together</td></tr>
+                <tr><td>"Already have logo"</td><td>Logo ≠ complete brand</td><td>Offer brand audit</td></tr>
+                <tr><td>"Worried about ownership"</td><td>100% ownership, forever</td><td>Send contract</td></tr>
+                <tr><td>"Quality concerns"</td><td>Portfolio + revisions + testimonials</td><td>Connect with clients</td></tr>
+                <tr><td>"Need to think about it"</td><td>Schedule strategy call</td><td>Send resources</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="part4">Part 4: Closing Strategies</h1>
+        <h2>The Discovery Call Framework</h2>
+        <p>Before pitching, always understand the client's situation:</p>
+        <ol>
+            <li><strong>Current State:</strong> "Tell me about your current branding. What's working? What's not?"</li>
+            <li><strong>Goals:</strong> "What do you want to achieve in the next 3-6 months?"</li>
+            <li><strong>Challenges:</strong> "What's been holding you back from reaching those goals?"</li>
+            <li><strong>Budget:</strong> "What budget range are you working with?"</li>
+            <li><strong>Timeline:</strong> "When do you need this completed?"</li>
+        </ol>
+
+        <h2>The Recommendation</h2>
+        <p>Based on their answers, recommend the right package:</p>
+        <ul>
+            <li>Limited budget + brand only? → <strong>CORE PACK</strong></li>
+            <li>Growing business + needs content? → <strong>NEXUS PACK</strong></li>
+            <li>Ready to scale + needs full solution? → <strong>MATRIX PACK</strong></li>
+        </ul>
+
+        <h2>The Close</h2>
+        <div class="success-box">
+            <p>"Based on what you've told me, I think the [PACKAGE] is perfect for you because [specific reason]. It includes [key benefits], and it'll be completed by [date]. The investment is [price], and you'll own everything forever. Does that sound like what you're looking for?"</p>
+        </div>
+
+        <h1 id="part5">Part 5: Marketing Materials and Talking Points</h1>
+        <h2>Key Talking Points to Use</h2>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">On Speed</div>
+            <p>"OPTILINE delivers professional brand assets in 7-21 days. Traditional agencies take 6-12 weeks. That's the difference between launching this month and launching next quarter."</p>
+        </div>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">On Ownership</div>
+            <p>"You own 100% of everything. No licensing restrictions, no ongoing fees, no vendor lock-in. It's yours forever."</p>
+        </div>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">On Affordability</div>
+            <p>"A traditional agency charges $3,000-$10,000 for what OPTILINE delivers at $799-$1,799. That's professional-grade work at a fraction of the cost."</p>
+        </div>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">On Privacy & Crypto Payments</div>
+            <p>"OPTILINE operates on a 100% decentralized payment model (Crypto). This means absolute privacy for your business, no international banking delays, and zero risk of your financial data being compromised on centralized servers. It's the future of B2B transactions."</p>
+        </div>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_5_roi_comparison.png" alt="ROI Comparison">
+            <figcaption data-label="Figure 4">OPTILINE vs Traditional Agency: Cost & Timeline Comparison</figcaption>
+        </figure>
+
+        <h1 id="part6">Part 6: Tracking Your Success</h1>
+        <h2>Commission Tracking</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Your Commission</th>
+                    <th>Payout Threshold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>CORE PACK</td><td class="commission-highlight">$100</td><td>1 sale = payout</td></tr>
+                <tr><td>NEXUS PACK</td><td class="commission-highlight">$150</td><td>1 sale = payout</td></tr>
+                <tr><td>MATRIX PACK</td><td class="commission-highlight">$200</td><td>1 sale = payout</td></tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <p><strong>Minimum Payout:</strong> $100 (even 1 CORE sale triggers payment)</p>
+            <p><strong>Payout Schedule:</strong> Bi-weekly</p>
+            <p><strong>Partner Payout Method:</strong> You can choose to receive your commissions via PayPal (Invoice) or USDT (Crypto).</p>
+        </div>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_6_earning_potential.png" alt="Earning Potential">
+            <figcaption data-label="Figure 5">Marketer Commission Earning Potential Over 6 Months</figcaption>
+        </figure>
+
+        <h2>Your Sales Dashboard</h2>
+        <p>Track your performance:</p>
+        <ul>
+            <li>Total leads generated</li>
+            <li>Conversion rate</li>
+            <li>Average deal size</li>
+            <li>Monthly commission earned</li>
+            <li>Lifetime earnings</li>
+        </ul>
+        <p><strong>Access your dashboard at:</strong> <a href="https://optiline.online/psp">PSP Network Portal</a></p>
+
+        <h1 id="part7">Part 7: Frequently Asked Questions</h1>
+        <h2>FAQ for You (The Marketer)</h2>
+
+        <p><strong>Q: How do I get paid?</strong><br>
+        A: Once a client completes the cryptocurrency payment and submits the onboarding form via your unique link, the commission is credited to your account. Payouts happen bi-weekly via PayPal invoice or crypto wallet.</p>
+
+        <p><strong>Q: What if a client asks for a refund?</strong><br>
+        A: If a refund is issued, the commission is clawed back from your earnings. This is detailed in your PSP Agreement Article 12.</p>
+
+        <p><strong>Q: Can I modify OPTILINE's marketing materials?</strong><br>
+        A: You can use provided materials as-is. Any modifications need approval from the Agency.</p>
+
+        <p><strong>Q: What if I have a client who wants a custom deal?</strong><br>
+        A: All pricing and packages are fixed. Don't negotiate on price. If a client has special needs, connect them with the Agency directly.</p>
+
+        <p><strong>Q: How do I handle support questions from clients?</strong><br>
+        A: Direct all client questions to the Agency support team. You're the marketer; they handle delivery and support.</p>
+
+        <h1 id="part8">Part 8: Your Success Playbook</h1>
+        <h2>30-Day Launch Plan</h2>
+
+        <div class="week-box">
+            <div class="week-title">Week 1: Setup</div>
+            <ul>
+                <li>Understand all three packages completely</li>
+                <li>Memorize objection handling responses</li>
+                <li>Get your unique tracking link</li>
+                <li>Set up your marketing channels</li>
+            </ul>
+        </div>
+
+        <div class="week-box">
+            <div class="week-title">Week 2-3: Launch</div>
+            <ul>
+                <li>Create 5 pieces of marketing content</li>
+                <li>Share case studies and examples</li>
+                <li>Reach out to 20 potential clients</li>
+                <li>Schedule discovery calls</li>
+            </ul>
+        </div>
+
+        <div class="week-box">
+            <div class="week-title">Week 4: Close</div>
+            <ul>
+                <li>Follow up with prospects</li>
+                <li>Make recommendations</li>
+                <li>Close your first deal</li>
+                <li>Celebrate!</li>
+            </ul>
+        </div>
+
+        <h2>Your Target Milestones & Mystery Rewards</h2>
+        <p>To maintain momentum, your goal is to consistently drive sales and unlock our three exclusive Partner Tiers. But what happens when you hit a tier? <strong>That’s our secret.</strong> We don't do standard boring bonuses. Instead, we reward our top performers with custom, highly-tailored perks based on your working style and dedication. Push your limits to discover what's waiting for you!</p>
+        
+        <div class="success-box" style="margin-bottom: 0.5cm;">
+            <p style="margin-bottom: 0.2cm;">🏆 <strong>Performance Tiers (Tracked in your Dashboard):</strong></p>
+            <ul>
+                <li><strong>Bronze Tier ($1,000 in commissions):</strong> Standard Payouts + <strong><i class="fas fa-gift" style="color:#9D4EDD;"></i> Level 1 Mystery Reward!</strong></li>
+                <li><strong>Silver Tier ($5,000 in commissions):</strong> Standard Payouts + <strong><i class="fas fa-box-open" style="color:#9D4EDD;"></i> Level 2 Exclusive Surprise!</strong></li>
+                <li><strong>Gold Tier ($10,000 in commissions):</strong> Standard Payouts + <strong><i class="fas fa-gem" style="color:#9D4EDD;"></i> Level 3 Elite Custom Perk & Priority Support!</strong></li>
+            </ul>
+        </div>
+
+        <h1 id="part9">Part 9: Resources and Support</h1>
+        <h2>Your Support Contacts</h2>
+
+        <div class="support-contact" style="padding: 0.5cm;">
+            <p style="margin-bottom: 0.3cm; color: #9D4EDD; font-weight: 600;">One Dedicated Support Channel for All Inquiries:</p>
+            <ul style="margin-bottom: 0.4cm;">
+                <li>Questions about packages & services</li>
+                <li>Technical issues & platform support</li>
+                <li>Marketing strategies & support</li>
+                <li>Commission & payout tracking</li>
+            </ul>
+            <p style="text-align: center; font-size: 11pt; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.3cm;">
+                <strong>Reach out to our team at:</strong> <a href="mailto:contact@optiline.online" style="font-size: 12pt; font-weight: 700;">contact@optiline.online</a>
+            </p>
+        </div>
+
+        <h2>Approved Marketing Materials & Proof of Work</h2>
+        <p>To maintain brand consistency and ensure you are sharing our highest-converting assets, we have consolidated all our success stories into one dynamic hub. Here you will find our latest case studies, before-and-after transformations, and verified client testimonials to help you close deals faster.</p>
+        
+        <div class="highlight-box" style="margin-bottom: 0.5cm;">
+            <p style="margin-bottom: 0.1cm; font-size: 11pt;"><strong>📁 The OPTILINE Master Portfolio</strong></p>
+            <p style="margin-bottom: 0.2cm;">Access all approved case studies, design examples, and client wins:</p>
+            <p><a href="https://optiline.online/portfolio/" style="font-weight: 700; font-size: 11pt;">&rarr; optiline.online/portfolio</a></p>
+        </div>
+
+        <div class="success-box" style="margin-top: 0.5cm;">
+            <h3>Final Thoughts</h3>
+            <p>You're not just selling services you're helping businesses transform their brand and grow. Every client you bring to OPTILINE is a business that will look more professional, feel more confident, and ultimately succeed more.</p>
+            <p><strong>That's the mission. That's why you're here.</strong></p>
+            <p style="text-align: center; font-size: 12pt; margin-top: 0.3cm;">NOW GO CLOSE SOME DEALS!</p>
+        </div>
+</body>
+</html>

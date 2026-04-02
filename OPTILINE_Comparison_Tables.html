@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTILINE Comparison Tables & Reference Data</title>
+    <meta name="author" content="OPTILINE Agency">
+    <meta name="subject" content="Partner Success Program Documentation">
+    <meta name="copyright" content="OPTILINE Agency © 2026">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.4;
+            color: #1a1a2e;
+            margin: 0;
+            padding: 0;
+        }
+        body::after {
+            content: "OPTILINE PSP";
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 90pt;
+            color: rgba(0, 0, 0, 0.03); 
+            z-index: -1;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        @page {
+            size: A4;
+            margin: 1.2cm 1cm 1.2cm 1cm;
+            @top-center { content: string(doctitle); font-size: 8pt; color: #666; }
+            @bottom-left { content: "OPTILINE Agency © 2026"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+            @bottom-center { content: "Page " counter(page); font-size: 8pt; color: #666; font-family: 'Inter', sans-serif; }
+            @bottom-right { content: "Confidential & Proprietary"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+        }
+        
+        @page :first {
+            margin: 0;
+            @top-center { content: none; }
+            @bottom-center { content: none; }
+        }
+        
+        @page cover { 
+            margin: 0;
+            @top-center { content: none; } 
+            @bottom-center { content: none; } 
+        }
+        
+        body { string-set: doctitle ""; }
+        h1 { string-set: doctitle content(); }
+        
+        /* Cover Page - Solid Background */
+        .cover {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            page: cover;
+            page-break-after: always;
+            break-after: page;
+            background-color: #2D0B50; 
+        }
+        
+        .cover-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #9D4EDD, #8a2be2, #9D4EDD);
+        }
+        
+        .cover-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 85%;
+            z-index: 10;
+        }
+        
+        .cover-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 60pt;
+            font-weight: 800;
+            background: linear-gradient(135deg, #9D4EDD, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5cm;
+            letter-spacing: 4px;
+        }
+        
+        .cover-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20pt;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.3cm;
+            letter-spacing: 2px;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 13pt;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2cm;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 0.4cm 1.2cm;
+            border: 2px solid rgba(157,78,221,0.5);
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11pt;
+            color: #9D4EDD;
+            letter-spacing: 2px;
+            margin-bottom: 2cm;
+        }
+        
+        .cover-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            color: rgba(255,255,255,0.5);
+            line-height: 2;
+        }
+        .cover-meta p {
+        text-align: center !important;
+        text-align-last: center !important;
+        }
+        
+        .cover-footer {
+            position: absolute;
+            bottom: 2cm;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .cover-version {
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            color: rgba(255,255,255,0.4);
+        }
+        /* Table of Contents */
+        @page toc { 
+            @top-center { content: none; } 
+            @bottom-center { content: none; } 
+        }
+        
+        .toc-page {
+            page: toc;
+            page-break-after: always;
+            break-after: page;
+        }
+        
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.6cm;
+            padding-bottom: 0.2cm;
+            border-bottom: 3px solid #9D4EDD;
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+        
+        .toc {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.25cm;
+            font-size: 10pt;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .toc a {
+            color: #1a1a2e;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .toc a::after {
+            content: leader('.') target-counter(attr(href url), page);
+        }
+        
+        .toc-section {
+            font-weight: 600;
+            color: #16213e;
+        }
+        /* Content Styles - Optimized for print */
+        .content {
+            padding-top: 0.2cm;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.4cm;
+            margin-bottom: 0.25cm;
+            padding-bottom: 0.1cm;
+            border-bottom: 2px solid #9D4EDD;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10.5pt;
+            font-weight: 600;
+            color: #16213e;
+            margin-top: 0.35cm;
+            margin-bottom: 0.15cm;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 9.5pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.25cm;
+            margin-bottom: 0.1cm;
+            break-after: avoid;
+            page-break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        p {
+            margin-bottom: 0.15cm;
+            text-align: justify;
+            text-align-last: left;
+            orphans: 3;
+            widows: 3;
+            break-inside: auto;
+            page-break-inside: auto;
+        }
+        
+        /* Tables - Optimized */
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin: 0.2cm 0;
+            font-size: 8pt;
+            break-inside: auto;
+            page-break-inside: auto;
+        }
+        
+        thead {
+            display: table-header-group;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1a1a3e, #16213e);
+            color: white;
+            padding: 0.15cm 0.2cm;
+            text-align: left;
+            font-size: 7.5pt;
+            letter-spacing: 0.3px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        td {
+            padding: 0.1cm 0.15cm;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        tr {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            border-left: 3px solid #9D4EDD;
+            padding: 0.2cm;
+            margin: 0.2cm 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #f0fff4, #e6ffed);
+            border-left: 3px solid #38a169;
+            padding: 0.2cm;
+            margin: 0.2cm 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-left: 3px solid #e53e3e;
+            padding: 0.2cm;
+            margin: 0.2cm 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        /* Commission Highlight */
+        .commission-highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #9D4EDD;
+        }
+        
+        /* Checkmark */
+        .check {
+            color: #38a169;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+        
+        /* Links */
+        a {
+            color: #9D4EDD;
+            text-decoration: none;
+        }
+        
+        /* Figure */
+        figure {
+            margin: 0.25cm 0;
+            text-align: center;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        figure img {
+            max-width: 100%;
+            max-height: 25vh;
+            height: auto;
+        }
+        
+        figcaption {
+            font-size: 7.5pt;
+            color: #666;
+            margin-top: 0.1cm;
+            font-style: italic;
+        }
+        
+        figcaption::before {
+            content: attr(data-label) ": ";
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        /* Key Numbers Box */
+        .key-numbers {
+            background: linear-gradient(135deg, #1a1a3e, #16213e);
+            color: white;
+            padding: 0.3cm;
+            border-radius: 8px;
+            margin: 0.3cm 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .key-numbers h3 {
+            color: #9D4EDD;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.15cm;
+        }
+        
+        .key-numbers ul {
+            margin-left: 0.5cm;
+            margin-bottom: 0;
+        }
+        
+        .key-numbers li {
+            margin-bottom: 0.05cm;
+            font-size: 8.5pt;
+        }
+        
+        /* Prevent overflow */
+        pre, table, figure, img, svg, blockquote {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        a { word-break: break-all; }
+        
+        /* Two column layout for small tables */
+        .two-col {
+            display: flex;
+            gap: 0.3cm;
+        }
+        
+        .two-col table {
+            flex: 1;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 0.6cm;
+            margin-bottom: 0.2cm;
+        }
+        
+        li {
+            margin-bottom: 0.05cm;
+            orphans: 2;
+            widows: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <div class="cover-accent"></div>
+        <div class="cover-grid"></div>
+        <div class="cover-content">
+            <div class="cover-logo">OPTILINE</div>
+            <div class="cover-title">Comparison Tables & Reference Data</div>
+            <div class="cover-subtitle">Complete Quick Reference Guide for Partners</div>
+            <div class="cover-badge">REFERENCE MANUAL</div>
+            <div class="cover-meta">
+                <p>All Tables | All Charts | All Data</p>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <div class="cover-version">Confidential - For Authorized Partners Only</div>
+        </div>
+    </div>
+<div class="toc-page">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul class="toc">
+            <li class="toc-section"><a href="#table1">Table 1: Commission Structure & ROI</a></li>
+            <li class="toc-section"><a href="#table2">Table 2: Complete Feature Breakdown</a></li>
+            <li class="toc-section"><a href="#table3">Table 3: Buyer Persona Quick Reference</a></li>
+            <li class="toc-section"><a href="#table4">Table 4: Objection Handling Matrix</a></li>
+            <li class="toc-section"><a href="#table5">Table 5: Package Selection by Business Type</a></li>
+            <li class="toc-section"><a href="#table6">Table 6: Delivery Timeline Breakdown</a></li>
+            <li class="toc-section"><a href="#table7">Table 7: Payment & Commission Details</a></li>
+            <li class="toc-section"><a href="#table8">Table 8: Legal Protections & Clauses</a></li>
+            <li class="toc-section"><a href="#table9">Table 9: Marketer Milestone Tiers & Rewards</a></li>
+            <li class="toc-section"><a href="#table10">Table 10: Marketing Standards Checklist</a></li>
+            <li class="toc-section"><a href="#table11">Table 11: Comparison - OPTILINE vs Traditional Agency</a></li>
+            <li class="toc-section"><a href="#table12">Table 12: Frequently Asked Questions Reference</a></li>
+            <li class="toc-section"><a href="#table13">Table 13: Content Calendar Template Reference</a></li>
+            <li class="toc-section"><a href="#table14">Table 14: Revision Process Timeline</a></li>
+            <li class="toc-section"><a href="#table15">Table 15: Commission Earning Scenarios</a></li>
+            <li class="toc-section"><a href="#key-numbers">Quick Reference: Key Numbers</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 id="table1">Table 1: Commission Structure & ROI</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_1_commission_structure.png" alt="Commission Structure">
+            <figcaption data-label="Figure 1">Commission Structure Comparison by Package</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Client Price</th>
+                    <th>Marketer Commission</th>
+                    <th>Commission %</th>
+                    <th>Min Timeline</th>
+                    <th>Max Timeline</th>
+                    <th>Typical Clients</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>CORE PACK</strong></td>
+                    <td>$799</td>
+                    <td class="commission-highlight">$100</td>
+                    <td>12.5%</td>
+                    <td>7 days</td>
+                    <td>10 days</td>
+                    <td>Startups, Solopreneurs</td>
+                </tr>
+                <tr>
+                    <td><strong>NEXUS PACK</strong></td>
+                    <td>$1,399</td>
+                    <td class="commission-highlight">$150</td>
+                    <td>10.7%</td>
+                    <td>14 days</td>
+                    <td>21 days</td>
+                    <td>E-Commerce, Coaches</td>
+                </tr>
+                <tr>
+                    <td><strong>MATRIX PACK</strong></td>
+                    <td>$1,799</td>
+                    <td class="commission-highlight">$200</td>
+                    <td>11.1%</td>
+                    <td>14 days</td>
+                    <td>21 days</td>
+                    <td>Agencies, Growth-focused</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1 id="table2">Table 2: Complete Feature Breakdown</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_2_features_comparison.png" alt="Features Comparison">
+            <figcaption data-label="Figure 2">OPTILINE Package Features Comparison</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>CORE</th>
+                    <th>NEXUS</th>
+                    <th>MATRIX</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="5"><strong>BRAND IDENTITY</strong></td></tr>
+                <tr><td>Logo Design</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>3 concepts, 2 revision rounds</td></tr>
+                <tr><td>Primary & Secondary Logos</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>Multiple formats (PNG, SVG, AI)</td></tr>
+                <tr><td>Color Palette</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>Psychology-driven, 5-7 colors</td></tr>
+                <tr><td>Font System</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>Display + body fonts with hierarchy</td></tr>
+                <tr><td>Brand Guidelines</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>20-30 pages comprehensive</td></tr>
+                <tr><td colspan="5"><strong>CONTENT CREATION</strong></td></tr>
+                <tr><td>Monthly Content Packs</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td><td>30 posts per month</td></tr>
+                <tr><td>Social Media Designs</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td><td>Instagram, Facebook, LinkedIn, TikTok</td></tr>
+                <tr><td>Video Scripts</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td><td>Professional scripts included</td></tr>
+                <tr><td>Content Calendar</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td><td>30-day planning + hashtag strategy</td></tr>
+                <tr><td>2 Months Content</td><td class="cross">-</td><td class="check">✓</td><td class="check">✓</td><td>60 posts total delivered</td></tr>
+                <tr><td colspan="5"><strong>ADVERTISING</strong></td></tr>
+                <tr><td>Ad Launchpad</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>Complete advertising solution</td></tr>
+                <tr><td>Audience Research</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>Target market analysis</td></tr>
+                <tr><td>Ad Creatives</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>3-6 high-converting designs</td></tr>
+                <tr><td>Ad Copy</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>Professional copywriting</td></tr>
+                <tr><td>Pixel Setup</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>Facebook, Instagram, Google</td></tr>
+                <tr><td>Performance Framework</td><td class="cross">-</td><td class="cross">-</td><td class="check">✓</td><td>Optimization guidelines</td></tr>
+                <tr><td colspan="5"><strong>REVISIONS & SUPPORT</strong></td></tr>
+                <tr><td>Revision Rounds</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>Typically 2-4 rounds included</td></tr>
+                <tr><td>File Formats</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>PNG, SVG, PDF, AI, etc.</td></tr>
+                <tr><td>Full Ownership</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td>100% client ownership forever</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table3">Table 3: Buyer Persona Quick Reference</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_4_buyer_personas.png" alt="Buyer Personas">
+            <figcaption data-label="Figure 3">Target Market Distribution by Buyer Persona</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Age</th>
+                    <th>Industry</th>
+                    <th>Pain Point</th>
+                    <th>Motivation</th>
+                    <th>Best Package</th>
+                    <th>Budget</th>
+                    <th>Timeline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Startup Founder</td><td>25-40</td><td>Tech/SaaS</td><td>Needs credibility fast</td><td>Investor confidence</td><td>CORE</td><td>$800-$2,000</td><td>Urgent</td></tr>
+                <tr><td>E-Commerce Owner</td><td>30-50</td><td>Retail/Online</td><td>Low conversion rates</td><td>Increase sales</td><td>MATRIX</td><td>$1,200-$2,000</td><td>Flexible</td></tr>
+                <tr><td>Service Professional</td><td>35-55</td><td>Coaching/Training</td><td>Content consistency</td><td>Build authority</td><td>NEXUS</td><td>$1,400-$1,800</td><td>Moderate</td></tr>
+                <tr><td>Corporate Manager</td><td>30-45</td><td>Corporate</td><td>Content overload</td><td>Show ROI</td><td>MATRIX</td><td>$1,500-$2,000</td><td>Moderate</td></tr>
+                <tr><td>Local Business Owner</td><td>40-60</td><td>Local Services</td><td>Compete with chains</td><td>Credibility</td><td>CORE</td><td>$800-$1,200</td><td>Flexible</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table4">Table 4: Objection Handling Matrix</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Objection</th>
+                    <th>Root Cause</th>
+                    <th>Response Strategy</th>
+                    <th>Key Points</th>
+                    <th>Follow-up</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>"Too expensive"</td><td>Price sensitivity</td><td>Compare to traditional agencies</td><td>ROI, one-time payment, ownership</td><td>Show case studies</td></tr>
+                <tr><td>"MATRIX is too much"</td><td>Unclear ROI</td><td>Explain customer acquisition cost</td><td>3-5x ROI typical, includes ads</td><td>Discuss specific metrics</td></tr>
+                <tr><td>"Timeline too long"</td><td>Urgency</td><td>Quality requires time</td><td>Can discuss expedited options</td><td>Work backward from deadline</td></tr>
+                <tr><td>"No guarantee"</td><td>Risk aversion</td><td>Guarantee professionalism, not sales</td><td>Define success metrics together</td><td>Share testimonials</td></tr>
+                <tr><td>"Already have logo"</td><td>Misunderstanding</td><td>Logo ≠ complete brand</td><td>Explain brand system importance</td><td>Offer brand audit</td></tr>
+                <tr><td>"Worried about ownership"</td><td>Trust issue</td><td>100% ownership, forever, no restrictions</td><td>Show contract, explain terms</td><td>Send agreement</td></tr>
+                <tr><td>"Quality concerns"</td><td>Unfamiliar brand</td><td>Portfolio + revisions + testimonials</td><td>Show examples, connect with clients</td><td>Offer discovery call</td></tr>
+                <tr><td>"Need to think about it"</td><td>Not ready</td><td>Schedule strategy call</td><td>Gather info, build confidence</td><td>Send resources</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table5">Table 5: Package Selection by Business Type</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_7_package_selection.png" alt="Package Selection">
+            <figcaption data-label="Figure 4">Recommended Package Distribution by Business Type</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Business Type</th>
+                    <th>CORE %</th>
+                    <th>NEXUS %</th>
+                    <th>MATRIX %</th>
+                    <th>Rationale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Startup Founder</td><td>70%</td><td>20%</td><td>10%</td><td>Needs brand first, content/ads later</td></tr>
+                <tr><td>E-Commerce Store</td><td>20%</td><td>40%</td><td>40%</td><td>Needs complete solution for sales</td></tr>
+                <tr><td>Service Coach</td><td>15%</td><td>60%</td><td>25%</td><td>Needs content for authority + some ads</td></tr>
+                <tr><td>Corporate Team</td><td>10%</td><td>30%</td><td>60%</td><td>Needs ads + content + brand alignment</td></tr>
+                <tr><td>Local Business</td><td>60%</td><td>30%</td><td>10%</td><td>Needs local brand presence first</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table6">Table 6: Delivery Timeline Breakdown</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_3_delivery_timeline.png" alt="Delivery Timeline">
+            <figcaption data-label="Figure 5">OPTILINE Delivery Timeline by Package</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Phase 1: Onboarding</th>
+                    <th>Phase 2: Creation</th>
+                    <th>Phase 3: Delivery</th>
+                    <th>Phase 4: Revisions</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>CORE PACK</strong></td><td>1 day</td><td>5-8 days</td><td>1 day</td><td>1-2 days</td><td>7-10 days</td></tr>
+                <tr><td><strong>NEXUS PACK</strong></td><td>1 day</td><td>10-15 days</td><td>1 day</td><td>2-4 days</td><td>14-21 days</td></tr>
+                <tr><td><strong>MATRIX PACK</strong></td><td>1 day</td><td>12-18 days</td><td>1 day</td><td>2-4 days</td><td>14-21 days</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table7">Table 7: Payment & Commission Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Commission Accrual</td><td>Upon client payment + onboarding form submission</td></tr>
+                <tr><td>Client Payment Method</td><td>Cryptocurrency Only</td></tr>
+                <tr><td>Marketer Payout Method</td><td>PayPal (Invoice) or Cryptocurrency</td></tr>
+                <tr><td>Minimum Threshold</td><td>$100 (1 CORE sale triggers payout)</td></tr>
+                <tr><td>Payout Schedule</td><td>Bi-weekly</td></tr>
+                <tr><td>Payout Processing Fees</td><td>Agency covers standard fees; Marketer covers specific PayPal cross-border/conversion rates</td></tr>
+                <tr><td>Transaction Tracking</td><td>Unique Transaction ID (Tx ID) in Verified Sales ledger</td></tr>
+                <tr><td>Attribution Window</td><td>60-day persistent cookie</td></tr>
+                <tr><td>Dispute Period</td><td>7 days to dispute clawback with evidence</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table8">Table 8: Legal Protections & Clauses</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Clause</th>
+                    <th>Article</th>
+                    <th>Key Provision</th>
+                    <th>Benefit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Clawback</td><td>12</td><td>Refunds deducted from future earnings</td><td>Protects agency from refund losses</td></tr>
+                <tr><td>Independent Contractor</td><td>13</td><td>Marketer responsible for taxes/insurance</td><td>Clarifies employment status</td></tr>
+                <tr><td>Brand License</td><td>14</td><td>Limited, non-exclusive, revocable license</td><td>Prevents brand misuse</td></tr>
+                <tr><td>Termination</td><td>15</td><td>Either party can terminate with 7 days notice</td><td>Flexibility for both parties</td></tr>
+                <tr><td>Liability Limitation</td><td>16</td><td>Caps liability, excludes indirect damages</td><td>Protects both parties</td></tr>
+                <tr><td>Dispute Resolution</td><td>17</td><td>Negotiation → Mediation → Arbitration</td><td>Clear escalation path</td></tr>
+                <tr><td>Amendments</td><td>18</td><td>Agency can update with 30 days notice</td><td>Regulatory compliance</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table9">Table 9: Marketer Milestone Tiers & Rewards</h1>
+        
+        <div class="info-box" style="margin-bottom: 0.4cm;">
+            <p><strong>⚠️ Note on Rewards:</strong> We believe in personalized incentives. The specific bonuses for unlocking Bronze, Silver, and Gold tiers are intentionally undisclosed. They will be exclusively tailored to your performance and personality once you hit the target!</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Performance Tier</th>
+                    <th>Commission Target</th>
+                    <th>Extra Rewards & Bonuses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Bronze Tier</strong></td><td>$1,000</td><td><strong><i class="fas fa-question-circle"></i> Mystery Reward (Level 1)</strong></td></tr>
+                <tr><td><strong>Silver Tier</strong></td><td>$5,000</td><td><strong><i class="fas fa-question-circle"></i> Exclusive Surprise (Level 2)</strong></td></tr>
+                <tr><td><strong>Gold Tier</strong></td><td>$10,000</td><td><strong><i class="fas fa-question-circle"></i> Elite Custom Perk (Level 3)</strong></td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table10">Table 10: Marketing Standards Checklist</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Standard</th>
+                    <th>Requirement</th>
+                    <th>Verification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Delivery Timeline</td><td>Must state 7-21 business days</td><td>Check all marketing materials</td></tr>
+                <tr><td>Client Ownership</td><td>Must clearly communicate 100% ownership</td><td>Review sales pitch</td></tr>
+                <tr><td>No Account Management</td><td>Must not claim ongoing account management</td><td>Audit marketing copy</td></tr>
+                <tr><td>Authentic Testimonials</td><td>All testimonials must be real and verifiable</td><td>Collect signed approvals</td></tr>
+                <tr><td>FTC Compliance</td><td>Must follow FTC guidelines for endorsements</td><td>Legal review</td></tr>
+                <tr><td>Platform Policies</td><td>Must comply with social media platform policies</td><td>Regular audits</td></tr>
+                <tr><td>Brand Usage</td><td>Must use only approved brand materials</td><td>Asset library access</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table11">Table 11: Comparison - OPTILINE vs Traditional Agency</h1>
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_5_roi_comparison.png" alt="ROI Comparison">
+            <figcaption data-label="Figure 6">OPTILINE vs Traditional Agency: Cost & Timeline Comparison</figcaption>
+        </figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>OPTILINE</th>
+                    <th>Traditional Agency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Initial Investment</td><td>$799-$1,799 (one-time)</td><td>$3,000-$10,000+</td></tr>
+                <tr><td>Monthly Cost</td><td>$0 (no ongoing fees)</td><td>$500-$3,000/month</td></tr>
+                <tr><td>6-Month Cost</td><td>$799-$1,799</td><td>$3,000-$18,000+</td></tr>
+                <tr><td>Ownership</td><td>100% client ownership</td><td>Agency retains rights</td></tr>
+                <tr><td>Delivery Time</td><td>7-21 days</td><td>6-12 weeks</td></tr>
+                <tr><td>Revisions</td><td>2-4 rounds included</td><td>Often charged separately</td></tr>
+                <tr><td>Flexibility</td><td>One-time purchase</td><td>Ongoing commitment</td></tr>
+                <tr><td>Scalability</td><td>Pay for what you need</td><td>Fixed monthly cost</td></tr>
+                <tr><td>Licensing</td><td>No restrictions</td><td>Often restricted</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table12">Table 12: Frequently Asked Questions Reference</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>How do I get paid?</td><td>Commission credited upon client crypto payment, paid bi-weekly via PayPal invoice or crypto</td><td>PSP Agreement Article 3</td></tr>
+                <tr><td>What if client requests refund?</td><td>Commission is clawed back from future earnings</td><td>PSP Agreement Article 12</td></tr>
+                <tr><td>Can I modify marketing materials?</td><td>Use as-is; modifications need approval</td><td>PSP Agreement Article 14</td></tr>
+                <tr><td>Can I negotiate pricing?</td><td>No; all pricing and packages are fixed</td><td>Marketer Kit FAQ</td></tr>
+                <tr><td>Who handles client support?</td><td>Agency support team; you handle marketing</td><td>Marketer Kit FAQ</td></tr>
+                <tr><td>Do I own the brand?</td><td>No; you have limited license only</td><td>PSP Agreement Article 14</td></tr>
+                <tr><td>Can I be terminated?</td><td>Yes; either party can terminate with 7 days notice</td><td>PSP Agreement Article 15</td></tr>
+                <tr><td>What's the minimum payout?</td><td>$100 (even 1 CORE sale triggers payment)</td><td>PSP Agreement Article 3</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table13">Table 13: Content Calendar Template Reference</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Post Type</th>
+                    <th>Platform</th>
+                    <th>Format</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Educational</td><td>Instagram</td><td>Carousel</td><td>5-7 slides</td></tr>
+                <tr><td>1</td><td>Promotional</td><td>Facebook</td><td>Video</td><td>15-30 seconds</td></tr>
+                <tr><td>2</td><td>Behind-the-Scenes</td><td>TikTok</td><td>Short Video</td><td>15-60 seconds</td></tr>
+                <tr><td>2</td><td>Testimonial</td><td>LinkedIn</td><td>Text + Image</td><td>Professional tone</td></tr>
+                <tr><td>3</td><td>Trending Topic</td><td>Instagram</td><td>Reel</td><td>30-90 seconds</td></tr>
+                <tr><td>3</td><td>CTA Post</td><td>All Platforms</td><td>Mixed</td><td>Drive action</td></tr>
+                <tr><td>4</td><td>Engagement</td><td>Instagram</td><td>Story</td><td>Interactive</td></tr>
+                <tr><td>4</td><td>Value Prop</td><td>LinkedIn</td><td>Article</td><td>Long-form</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table14">Table 14: Revision Process Timeline</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Duration</th>
+                    <th>Deliverable</th>
+                    <th>Approval</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Initial Delivery</td><td>Day 1</td><td>Complete project files</td><td>Client review</td></tr>
+                <tr><td>Revision Round 1</td><td>Days 2-3</td><td>Modifications based on feedback</td><td>Client approval</td></tr>
+                <tr><td>Revision Round 2</td><td>Days 4-5</td><td>Additional refinements</td><td>Client approval</td></tr>
+                <tr><td>Revision Round 3</td><td>Days 6-7</td><td>Final polish (if needed)</td><td>Client approval</td></tr>
+                <tr><td>Final Delivery</td><td>Day 8</td><td>All files in requested formats</td><td>Project complete</td></tr>
+            </tbody>
+        </table>
+
+        <h1 id="table15">Table 15: Commission Earning Scenarios</h1>
+        <h2>Scenario 1: Consistent Partner (Unlocking Milestones)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>CORE Sales</th>
+                    <th>NEXUS Sales</th>
+                    <th>MATRIX Sales</th>
+                    <th>Total Sales</th>
+                    <th>Monthly Commission</th>
+                    <th>Cumulative (Tier Progress)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>2</td><td>1</td><td>0</td><td><strong>3</strong></td><td>$350</td><td>$350</td></tr>
+                <tr><td>2</td><td>2</td><td>1</td><td>1</td><td><strong>4</strong></td><td>$550</td><td>$900</td></tr>
+                <tr><td>3</td><td>3</td><td>1</td><td>0</td><td><strong>4</strong></td><td>$450</td><td><strong>$1,350 (Bronze Unlocked! 🎁)</strong></td></tr>
+                <tr><td>4</td><td>4</td><td>2</td><td>1</td><td><strong>7</strong></td><td>$900</td><td>$2,250</td></tr>
+                <tr><td>5</td><td>4</td><td>3</td><td>1</td><td><strong>8</strong></td><td>$1,050</td><td>$3,300</td></tr>
+                <tr><td>6</td><td>5</td><td>4</td><td>3</td><td><strong>12</strong></td><td>$1,700</td><td><strong>$5,000 (Silver Unlocked! 💎)</strong></td></tr>
+            </tbody>
+        </table>
+
+        <h2>Scenario 2: Moderate Marketer (4-5 sales/month)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>CORE Sales</th>
+                    <th>NEXUS Sales</th>
+                    <th>MATRIX Sales</th>
+                    <th>Monthly Commission</th>
+                    <th>Cumulative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>2</td><td>1</td><td>1</td><td>$400</td><td>$400</td></tr>
+                <tr><td>2</td><td>1</td><td>2</td><td>1</td><td>$500</td><td>$900</td></tr>
+                <tr><td>3</td><td>2</td><td>1</td><td>2</td><td>$600</td><td>$1,500</td></tr>
+                <tr><td>4</td><td>1</td><td>2</td><td>2</td><td>$650</td><td>$2,150</td></tr>
+                <tr><td>5</td><td>2</td><td>2</td><td>1</td><td>$550</td><td>$2,700</td></tr>
+                <tr><td>6</td><td>1</td><td>1</td><td>3</td><td>$700</td><td>$3,400</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Scenario 3: Aggressive Marketer (6-8 sales/month)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>CORE Sales</th>
+                    <th>NEXUS Sales</th>
+                    <th>MATRIX Sales</th>
+                    <th>Monthly Commission</th>
+                    <th>Cumulative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>3</td><td>2</td><td>1</td><td>$600</td><td>$600</td></tr>
+                <tr><td>2</td><td>2</td><td>2</td><td>2</td><td>$700</td><td>$1,300</td></tr>
+                <tr><td>3</td><td>3</td><td>2</td><td>3</td><td>$900</td><td>$2,200</td></tr>
+                <tr><td>4</td><td>2</td><td>3</td><td>3</td><td>$1,000</td><td>$3,200</td></tr>
+                <tr><td>5</td><td>3</td><td>2</td><td>4</td><td>$1,100</td><td>$4,300</td></tr>
+                <tr><td>6</td><td>2</td><td>3</td><td>4</td><td>$1,300</td><td>$5,600</td></tr>
+            </tbody>
+        </table>
+
+        <div class="key-numbers">
+            <h3 id="key-numbers">Quick Reference: Key Numbers</h3>
+            <ul>
+                <li><strong>3 Packages:</strong> CORE ($799), NEXUS ($1,399), MATRIX ($1,799)</li>
+                <li><strong>3 Commissions:</strong> $100, $150, $200</li>
+                <li><strong>5 Buyer Personas:</strong> Startup, E-Commerce, Service Pro, Corporate, Local</li>
+                <li><strong>7 Professional Charts:</strong> Commission, Features, Timeline, Personas, ROI, Earnings, Selection</li>
+                <li><strong>8 Common Objections:</strong> Handled with ready-made responses</li>
+                <li><strong>18 Legal Articles:</strong> Comprehensive PSP Agreement</li>
+                <li><strong>7-21 Days:</strong> Consistent delivery timeline across all packages</li>
+                <li><strong>100% Ownership:</strong> Client ownership guarantee</li>
+                <li><strong>60-Day Attribution:</strong> Cookie persistence window</li>
+                <li><strong>$100 Minimum:</strong> Payout threshold</li>
+            </ul>
+        </div>
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTILINE Partner Success Program (PSP) - Network Agreement</title>
+    <meta name="author" content="OPTILINE Agency">
+    <meta name="subject" content="Partner Success Program Documentation">
+    <meta name="copyright" content="OPTILINE Agency © 2026">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body::after {
+            content: "OPTILINE PSP";
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 90pt;
+            color: rgba(0, 0, 0, 0.03); 
+            z-index: -1;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #1a1a2e;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @page {
+            size: A4;
+            margin: 1.2cm 1cm 1.2cm 1cm;
+            @top-center { content: string(doctitle); font-size: 8pt; color: #666; }
+            @bottom-left { content: "OPTILINE Agency © 2026"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+            @bottom-center { content: "Page " counter(page); font-size: 8pt; color: #666; font-family: 'Inter', sans-serif; }
+            @bottom-right { content: "Confidential & Proprietary"; font-size: 8pt; color: #888; font-family: 'Inter', sans-serif; }
+        }
+        
+        @page :first {
+            margin: 0;
+            @top-center { content: none; }
+            @bottom-center { content: none; }
+        }
+        
+        @page cover { @top-center { content: none; } @bottom-center { content: none; } }
+        @page toc { @top-center { content: none; } @bottom-center { content: none; } }
+        
+        body { string-set: doctitle ""; }
+        h1 { string-set: doctitle content(); }
+        
+        .cover {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            page: cover;
+            page-break-after: always;
+            break-after: page;
+            background-color: #2D0B50; 
+        }
+        
+        .cover-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #9D4EDD, #8a2be2, #9D4EDD);
+        }
+        
+        .cover-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 85%;
+            z-index: 10;
+        }
+        
+        .cover-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 60pt;
+            font-weight: 800;
+            background: linear-gradient(135deg, #9D4EDD, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5cm;
+            letter-spacing: 4px;
+        }
+        
+        .cover-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22pt;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.3cm;
+            letter-spacing: 2px;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 14pt;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2cm;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 0.4cm 1.2cm;
+            border: 2px solid rgba(157,78,221,0.5);
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11pt;
+            color: #9D4EDD;
+            letter-spacing: 2px;
+            margin-bottom: 2cm;
+        }
+        
+        .cover-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            color: rgba(255,255,255,0.5);
+            line-height: 2;
+        }
+        .cover-meta p {
+        text-align: center !important;
+        text-align-last: center !important;
+        }
+        
+        .cover-footer {
+            position: absolute;
+            bottom: 2cm;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .cover-version {
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* Table of Contents */
+        .toc-page {
+            page: toc;
+            page-break-after: always;
+        }
+        
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 1cm;
+            padding-bottom: 0.3cm;
+            border-bottom: 3px solid #9D4EDD;
+        }
+        
+        .toc {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.4cm;
+            font-size: 11pt;
+        }
+        
+        .toc a {
+            color: #1a1a2e;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .toc a::after {
+            content: leader('.') target-counter(attr(href url), page);
+        }
+        
+        .toc-section {
+            font-weight: 600;
+            color: #16213e;
+        }
+        
+        .toc-subsection {
+            padding-left: 1cm;
+            font-weight: 400;
+            color: #444;
+        }
+        
+        /* Content Styles */
+        .content {
+            padding-top: 0.5cm;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.8cm;
+            margin-bottom: 0.4cm;
+            padding-bottom: 0.2cm;
+            border-bottom: 2px solid #9D4EDD;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14pt;
+            font-weight: 600;
+            color: #16213e;
+            margin-top: 0.6cm;
+            margin-bottom: 0.3cm;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.4cm;
+            margin-bottom: 0.2cm;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin-bottom: 0.3cm;
+            text-align: justify;
+            text-align-last: left;
+        }
+        
+        ul, ol {
+            margin-left: 0.8cm;
+            margin-bottom: 0.4cm;
+        }
+        
+        li {
+            margin-bottom: 0.15cm;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin: 0.5cm 0;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+        
+        thead {
+            display: table-header-group;
+        }
+        
+        th {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1a1a3e, #16213e);
+            color: white;
+            padding: 0.3cm;
+            text-align: left;
+            font-size: 9pt;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 0.25cm 0.3cm;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr {
+            page-break-inside: avoid;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            border-left: 4px solid #9D4EDD;
+            padding: 0.4cm;
+            margin: 0.5cm 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: #16213e;
+            margin-bottom: 0.2cm;
+            font-size: 10pt;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-left: 4px solid #e53e3e;
+            padding: 0.4cm;
+            margin: 0.5cm 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f0fff4, #e6ffed);
+            border-left: 4px solid #38a169;
+            padding: 0.4cm;
+            margin: 0.5cm 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Article Number */
+        .article-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8em;
+            height: 1.8em;
+            background: linear-gradient(135deg, #9D4EDD, #8a2be2);
+            color: white;
+            border-radius: 50%;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 9pt;
+            margin-right: 0.3cm;
+        }
+        
+        /* Commission Highlight */
+        .commission-highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #9D4EDD;
+            font-size: 12pt;
+        }
+        
+        /* Signature Section */
+        .signature-section {
+            margin-top: 1cm;
+            page-break-inside: avoid;
+        }
+        
+        .signature-box {
+            border: 1px solid #ccc;
+            padding: 0.5cm;
+            margin: 0.3cm 0;
+            background: #fafafa;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            width: 60%;
+            margin: 0.5cm 0 0.2cm 0;
+        }
+        
+        /* Links */
+        a {
+            color: #9D4EDD;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Figure */
+        figure {
+            margin: 0.5cm 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        
+        figure img {
+            max-width: 100%;
+            max-height: 35vh;
+            height: auto;
+        }
+        
+        figcaption {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 0.2cm;
+            font-style: italic;
+        }
+        
+        figcaption::before {
+            content: attr(data-label) ": ";
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        /* Prevent overflow */
+        pre, table, figure, img, svg, blockquote {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        a { word-break: break-all; }
+        
+        /* Appendix */
+        .appendix-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-top: 0.8cm;
+            margin-bottom: 0.4cm;
+            padding-bottom: 0.2cm;
+            border-bottom: 2px solid #8a2be2;
+        }
+        
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0.3cm 0;
+        }
+        
+        .checklist li {
+            padding-left: 1.2cm;
+            position: relative;
+            margin-bottom: 0.2cm;
+        }
+        
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.1cm;
+            width: 0.6cm;
+            height: 0.6cm;
+            border: 2px solid #9D4EDD;
+            border-radius: 3px;
+        }
+        
+        /* Page break */
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <div class="cover-accent"></div>
+        <div class="cover-grid"></div>
+        <div class="cover-content">
+            <div class="cover-logo">OPTILINE</div>
+            <div class="cover-title">Partner Success Program</div>
+            <div class="cover-subtitle">Network Agreement</div>
+            <div class="cover-badge">PSP NETWORK</div>
+            <div class="cover-meta">
+                <p>Legal Partnership Agreement</p>
+            </div>
+        </div>
+        <div class="cover-footer">
+            <div class="cover-version">Confidential - For Authorized Partners Only</div>
+        </div>
+    </div>
+
+    <div class="toc-page">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul class="toc">
+           
+            <li class="toc-section"><a href="#article1">Article 1: Scope of Marketed Services</a></li>
+            <li class="toc-section"><a href="#article2">Article 2: Commission Structure</a></li>
+            <li class="toc-section"><a href="#article3">Article 3: Payment and Eligibility Terms</a></li>
+            <li class="toc-section"><a href="#article4">Article 4: Marketing Standards and Compliance</a></li>
+            <li class="toc-section"><a href="#article5">Article 5: Confidentiality and Intellectual Property</a></li>
+            <li class="toc-section"><a href="#article6">Article 6: Commission Disbursement & Integrity</a></li>
+            <li class="toc-section"><a href="#article7">Article 7: Transactional Gateway Synergy</a></li>
+            <li class="toc-section"><a href="#article8">Article 8: Currency Conversion & Mitigation</a></li>
+            <li class="toc-section"><a href="#article9">Article 9: Attribution & Persistent Cookies</a></li>
+            <li class="toc-section"><a href="#article10">Article 10: Compliance & Brand Representation</a></li>
+            <li class="toc-section"><a href="#article11">Article 11: Internal Transaction Mitigation</a></li>
+            <li class="toc-section"><a href="#article12">Article 12: Refunds, Chargebacks & Clawback Clause</a></li>
+            <li class="toc-section"><a href="#article13">Article 13: Independent Contractor Clause</a></li>
+            <li class="toc-section"><a href="#article14">Article 14: Brand License & Usage</a></li>
+            <li class="toc-section"><a href="#article15">Article 15: Termination Clause</a></li>
+            <li class="toc-section"><a href="#article16">Article 16: Limitation of Liability</a></li>
+            <li class="toc-section"><a href="#article17">Article 17: Dispute Resolution</a></li>
+            <li class="toc-section"><a href="#article18">Article 18: Amendments and Updates</a></li>
+            <li class="toc-section"><a href="#article19">Article 19: General Provisions</a></li>
+            <li class="toc-section"><a href="#appendix-a">Appendix A: Commission Schedule Reference</a></li>
+            <li class="toc-section"><a href="#appendix-b">Appendix B: Marketing Standards Checklist</a></li>
+            <li class="toc-section"><a href="#signatures">Signatures</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1 id="preamble">Preamble</h1>
+        
+        
+        <p>This Agreement is entered into between <strong>OPTILINE Agency</strong> (hereinafter referred to as "the Agency") and <strong>Marketer Name/Company</strong> (hereinafter referred to as "the Marketer"), for the purpose of marketing the Done-For-You Digital Asset services provided by the Agency.</p>
+        
+        <p>The parties acknowledge that this relationship is established to create a mutually beneficial partnership that drives sales growth while maintaining professional standards and legal compliance.</p>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Quick Access Links</div>
+            <p><a href="https://optiline.online/psp">PSP Network Portal</a> | <a href="mailto:contact@optiline.online">Support Email</a></p>
+        </div>
+
+        <h1 id="article1"><span class="article-number">1</span>Scope of Marketed Services</h1>
+        <p>The Marketer is authorized to promote the Agency's core services, which include:</p>
+        <ul>
+            <li><strong>Brand Kit Identity:</strong> Comprehensive visual identity packages</li>
+            <li><strong>Monthly Content Packs:</strong> Curated monthly content for social media</li>
+            <li><strong>Ad Launchpad:</strong> Engineered advertising campaigns for immediate ROI</li>
+        </ul>
+        <p>These services are offered under three distinct package tiers as detailed in Article 2.</p>
+
+        <h1 id="article2"><span class="article-number">2</span>Commission Structure</h1>
+        <p>Given that the Agency's business model is based on one-time payments with flat, transparent pricing rather than long-term contracts, the Marketer is entitled to a commission for each successfully sold service.</p>
+
+        <h2>Commission Rates</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Service Package</th>
+                    <th>Client Price</th>
+                    <th>Marketer Commission</th>
+                    <th>Delivery Timeline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>CORE PACK</strong></td>
+                    <td>$799</td>
+                    <td class="commission-highlight">$100</td>
+                    <td>7-10 business days</td>
+                </tr>
+                <tr>
+                    <td><strong>NEXUS PACK</strong></td>
+                    <td>$1,399</td>
+                    <td class="commission-highlight">$150</td>
+                    <td>14-21 business days</td>
+                </tr>
+                <tr>
+                    <td><strong>MATRIX PACK</strong></td>
+                    <td>$1,799</td>
+                    <td class="commission-highlight">$200</td>
+                    <td>14-21 business days</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <figure>
+            <img src="https://optiline.online/assets/imgs/pspic/chart_1_commission_structure.png" alt="Commission Structure Chart">
+            <figcaption data-label="Figure 1">Commission Structure Comparison by Package</figcaption>
+        </figure>
+
+        <h2>Successful Sale Definition</h2>
+        <p>A successful sale is attributed to the Marketer upon:</p>
+        <ol>
+            <li>The client's completion of payment through the Agency's designated payment gateway</li>
+            <li>Submission of the Agency's Smart Onboarding Form via the Marketer's unique tracking link</li>
+            <li>Confirmation of the transaction in the Agency's Verified Sales ledger</li>
+        </ol>
+
+        <h1 id="article3"><span class="article-number">3</span>Payment and Eligibility Terms</h1>
+        
+        <h2>Commission Accrual and Payment</h2>
+        <p>Commissions are due to the Marketer once the Agency has received the full payment from the client and the "Creation" phase of the service has officially commenced.</p>
+        
+        <p>The Marketer's commission is not affected by the client's revision rounds (typically 2 to 4 rounds), as the sale is considered closed upon initial Full Delivery.</p>
+
+        <h2>Minimum Disbursement Threshold</h2>
+        <div class="info-box">
+            <p><strong>$100 Minimum:</strong> To optimize accounting efficiency, the minimum disbursement threshold is $100. This ensures that even a single CORE package conversion triggers a payout, maintaining high cash-flow velocity for our partners.</p>
+        </div>
+
+        <h2>Client Payment Processing</h2>
+        <p>To ensure maximum security and privacy, all client transactions are processed exclusively via decentralized cryptocurrency networks. Payments are calculated based on the live USD peg value at the time of checkout. While stablecoins (USDT, USDC) are strictly preferred to prevent volatility discrepancies, other accepted cryptocurrencies must exactly match the package's USD invoice value at the precise moment of transfer. The Agency does not process traditional credit card or fiat payments from clients.</p>
+
+        <h1 id="article4"><span class="article-number">4</span>Marketing Standards and Compliance</h1>
+        <p>The Marketer agrees to promote the Agency in accordance with the standards outlined on the official website, specifically:</p>
+
+        <h2>Mandatory Representations</h2>
+        <ul>
+            <li><strong>No Account Management Claims:</strong> The Agency's services are not ongoing account management. Marketers must emphasize that the Agency provides production-ready assets for clients to publish.</li>
+            <li><strong>100% Client Ownership:</strong> Clearly communicate that clients retain 100% ownership of all delivered assets and files.</li>
+            <li><strong>Official Delivery Timelines:</strong> Adhere to the Agency's official delivery timeframe of 7 to 21 business days based on package complexity.</li>
+        </ul>
+
+        <h2>Prohibited Activities</h2>
+        <div class="warning-box">
+            <p><strong>Partners must adhere to ethical marketing standards. Prohibited activities include:</strong></p>
+            <ul>
+                <li>Spamming or unsolicited outreach</li>
+                <li>Unauthorized automated outreach</li>
+                <li>Deceptive claims or misleading statements</li>
+                <li>False testimonials or fabricated results</li>
+            </ul>
+            <p><strong>Non-compliance results in immediate revocation of partner status and forfeiture of pending balances.</strong></p>
+        </div>
+
+        <h1 id="article5"><span class="article-number">5</span>Confidentiality and Intellectual Property (NDA & IP)</h1>
+        <p>The Marketer agrees:</p>
+        <ol>
+            <li>Not to copy or reuse the Agency's proprietary frameworks (e.g., the Hook-Story-Offer system) to establish a competing business.</li>
+            <li>All client data acquired through the Marketer's efforts remains the sole property of OPTILINE Agency. The Marketer shall not use, share, or disclose any client information without written consent from the Agency.</li>
+            <li>Confidential Information includes but is not limited to: pricing models, marketing strategies, client lists, performance data, and proprietary processes.</li>
+        </ol>
+
+        <h1 id="article6"><span class="article-number">6</span>Commission Disbursement & Integrity</h1>
+        <p>OPTILINE is committed to partner profitability. The Agency covers all standard PayPal invoice processing fees, ensuring the Marketer receives their full net commission without deductions.</p>
+
+        <h2>Payout Schedule & Verification</h2>
+        <p>Commissions are processed and disbursed on a <strong>bi-weekly</strong> basis, provided the minimum threshold of $100 has been reached. To ensure compliance with global Anti-Money Laundering (AML) standards, the Agency reserves the right to request basic identity verification (KYC) prior to processing cryptocurrency or fiat payouts if suspicious activity is detected.</p>
+
+        <h1 id="article7"><span class="article-number">7</span>Transactional Gateway Synergy</h1>
+        <p>To maintain instantaneous liquidity and security, OPTILINE processes all client transactions exclusively via decentralized blockchain networks. However, to accommodate our global partners, commission payouts can be requested via:</p>
+        <ul>
+            <li>PayPal via Invoice (Fiat settlement)</li>
+            <li>USDT / USDC (Crypto settlement)</li>
+        </ul>
+        <p>This ensures transparent, secure, and flexible fund transfers for our marketing partners regardless of the client's payment network.</p>
+
+        <h1 id="article8"><span class="article-number">8</span>Fiat Conversion & Settlement</h1>
+        <p>Since all client funds are received in Cryptocurrency, partners requesting payouts via PayPal (Fiat) must submit a commercial invoice. OPTILINE covers standard invoice processing fees, but any specific cross-border PayPal receiving fees or regional conversion rates applied by PayPal to the Marketer's account are the sole responsibility of the Marketer.</p>
+        <p>The Marketer must submit withdrawal requests through the Agency's designated PSP portal specifying their preferred payout method.</p>
+        
+        <h1 id="article9"><span class="article-number">9</span>Attribution & Persistent Cookies</h1>
+        
+        <h2>Tracking Mechanism</h2>
+        <p>Our ecosystem utilizes high-precision attribution tracking with a <strong>60-day persistent cookie</strong>. If a referred lead converts within 60 days of their initial visit, the commission is automatically and permanently attributed to your Partner ID. The Agency is not liable for lost attribution due to clients clearing cookies, using ad-blockers, or switching devices prior to submitting the onboarding form.</p>
+
+        <h2>Transaction ID (Tx ID)</h2>
+        <p>Every sale is logged with a unique Transaction ID in our Verified Sales ledger for complete transparency and audit purposes.</p>
+
+        <h1 id="article10"><span class="article-number">10</span>Compliance & Brand Representation</h1>
+        <p>Partners must adhere to ethical marketing standards and represent the Agency professionally at all times. The Agency reserves the right to:</p>
+        <ul>
+            <li>Monitor marketing activities for compliance</li>
+            <li>Request modifications to marketing materials</li>
+            <li>Suspend or terminate partnership for violations</li>
+        </ul>
+        <p>Non-compliance results in immediate revocation of partner status and forfeiture of pending balances.</p>
+
+        <h1 id="article11"><span class="article-number">11</span>Internal Transaction Mitigation</h1>
+        <p>To prevent system exploitation, "Self-Referrals" (purchasing services for personal use via one's own partner link) are strictly prohibited.</p>
+        
+        <p>The Agency's AI-driven audit system monitors for IP and identity overlaps to ensure ecosystem fairness. Violations will result in:</p>
+        <ul>
+            <li>Forfeiture of commissions on flagged transactions</li>
+            <li>Potential termination of the partnership agreement</li>
+        </ul>
+
+        <h1 id="article12"><span class="article-number">12</span>Refunds & Clawback Clause</h1>
+        
+        <h2>Refund Policy</h2>
+        <p>In the event that the Agency issues a verified refund to a client after the Marketer's commission has been paid, the following applies. Please note that all crypto refunds are issued to the client minus applicable blockchain network fees (gas fees).</p>
+
+        <h2>Clawback Mechanism:</h2>
+        <div class="warning-box">
+            <ul>
+                <li>The Agency shall deduct the full commission amount from the Marketer's future earnings (Clawback)</li>
+                <li>If the Marketer has no pending balance, the amount is recorded as a debit against future commissions</li>
+                <li>The Marketer remains liable for any negative balance until settled. If a negative balance remains unresolved for over 30 days, the Agency reserves the right to suspend the account and pursue legal resolution.</li>
+            </ul>
+        </div>
+
+        <h2>Dispute Resolution</h2>
+        <p>The Marketer may dispute a clawback within 7 days of notification by providing evidence of service delivery or client satisfaction. The Agency will review and respond within 5 business days.</p>
+
+        <h1 id="article13"><span class="article-number">13</span>Independent Contractor Clause</h1>
+        
+        <h2>Relationship Definition</h2>
+        <p>The Marketer and the Agency acknowledge and agree that:</p>
+        <ol>
+            <li><strong>The Marketer is an Independent Contractor</strong> – not an employee, agent, or representative of the Agency</li>
+            <li><strong>No Employment Relationship</strong> – This agreement does not create an employment relationship, partnership, joint venture, or agency relationship</li>
+            <li><strong>No Legal Representation</strong> – The Marketer is not authorized to represent, bind, or make commitments on behalf of OPTILINE Agency</li>
+            <li><strong>Tax Responsibility</strong> – The Marketer is solely responsible for:
+                <ul>
+                    <li>All applicable taxes (federal, state, local, and international, including cryptocurrency capital gains or income tax reporting)</li>
+                    <li>Self-employment taxes</li>
+                    <li>Business expenses and insurance</li>
+                    <li>Maintaining proper business records</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>No Benefits</h2>
+        <p>The Marketer is not entitled to any employee benefits, including health insurance, retirement plans, paid leave, or workers' compensation.</p>
+
+        <h1 id="article14"><span class="article-number">14</span>Brand License & Usage</h1>
+        
+        <h2>Limited License Grant</h2>
+        <p>The Agency grants the Marketer a limited, non-exclusive, and revocable license to use:</p>
+        <ul>
+            <li>OPTILINE logos and branding materials</li>
+            <li>Marketing collateral and promotional assets</li>
+            <li>Proprietary frameworks and methodologies</li>
+        </ul>
+
+        <p><strong>Permitted Use:</strong> Promotion of the Agency's services as outlined in this agreement</p>
+
+        <p><strong>Prohibited Use:</strong></p>
+        <ul>
+            <li>Creating derivative works or modified versions of Agency materials</li>
+            <li>Using Agency branding for competing services</li>
+            <li>Sublicensing or transferring rights to third parties</li>
+            <li>Using materials after termination of this agreement</li>
+        </ul>
+
+        <h2>Asset Ownership</h2>
+        <p>All marketing materials, logos, and brand assets remain the exclusive property of OPTILINE Agency. The Marketer receives only a usage license, not ownership.</p>
+
+        <h2>Immediate Cessation Upon Termination</h2>
+        <div class="warning-box">
+            <p>The Marketer agrees to immediately cease all use of Agency assets and branding upon termination of this agreement. Failure to comply may result in legal action.</p>
+        </div>
+
+        <h1 id="article15"><span class="article-number">15</span>Termination Clause</h1>
+        
+        <h2>Termination Rights</h2>
+        <p>Either party may terminate this agreement at any time and for any reason by providing written notice (email is acceptable) with a minimum of <strong>7 days advance notice</strong>.</p>
+
+        <h2>Termination Procedures</h2>
+        <ol>
+            <li><strong>Notice Requirement:</strong> Termination notice must be sent to the designated contact email address of the other party</li>
+            <li><strong>Effective Date:</strong> Termination becomes effective 7 days after notice is received</li>
+            <li><strong>Final Commission:</strong> All commissions earned and accrued prior to the termination date remain due and payable</li>
+        </ol>
+
+        <h2>Post-Termination Obligations</h2>
+        <p>Upon termination:</p>
+        <ul>
+            <li>The Marketer must immediately cease all promotional activities using Agency materials</li>
+            <li>All Agency branding and assets must be removed from the Marketer's platforms</li>
+            <li>The Marketer remains bound by confidentiality and IP protection clauses</li>
+            <li>Pending commissions will be paid according to the regular disbursement schedule</li>
+        </ul>
+
+        <h2>Survival Clauses</h2>
+        <p>The following articles survive termination indefinitely:</p>
+        <ul>
+            <li>Article 5: Confidentiality and Intellectual Property</li>
+            <li>Article 13: Independent Contractor Clause</li>
+            <li>Article 14: Brand License & Usage</li>
+            <li>Article 16: Limitation of Liability</li>
+            <li>Article 17: Dispute Resolution</li>
+        </ul>
+
+        <h1 id="article16"><span class="article-number">16</span>Limitation of Liability</h1>
+        
+        <h2>Liability Caps</h2>
+        <p>Neither party shall be liable to the other for:</p>
+        <ul>
+            <li>Indirect, incidental, or consequential damages</li>
+            <li>Lost profits or revenue</li>
+            <li>Loss of business opportunity</li>
+            <li>Reputational harm</li>
+        </ul>
+        <p>The Agency's total liability under this agreement shall not exceed the total commissions paid to the Marketer in the 12 months preceding the claim.</p>
+
+        <h1 id="article17"><span class="article-number">17</span>Dispute Resolution</h1>
+        
+        <h2>Informal Resolution</h2>
+        <p>In the event of a dispute, the parties agree to attempt resolution through good-faith negotiation within 14 days of written notice.</p>
+
+        <h2>Escalation</h2>
+        <p>If informal resolution fails, disputes shall be resolved through:</p>
+        <ol>
+            <li>Mediation (if both parties agree)</li>
+            <li>Binding Arbitration under applicable law</li>
+            <li>Legal Action as a last resort</li>
+        </ol>
+
+        <h1 id="article18"><span class="article-number">18</span>Amendments and Updates</h1>
+        <p>OPTILINE reserves the right to amend these terms to reflect:</p>
+        <ul>
+            <li>Changes in global financial regulations</li>
+            <li>Platform updates and security enhancements</li>
+            <li>Business model evolution</li>
+            <li>Legal compliance requirements</li>
+        </ul>
+        <p><strong>Notice of Changes:</strong> The Agency will provide 30 days advance notice of material changes. Continued participation constitutes acceptance of amended terms.</p>
+
+        <h1 id="article19"><span class="article-number">19</span>General Provisions</h1>
+        
+        <h2>Entire Agreement</h2>
+        <p>This agreement constitutes the entire agreement between the parties and supersedes all prior negotiations, representations, and agreements.</p>
+
+        <h2>Governing Law & Jurisdiction</h2>
+        <p>This agreement shall be governed by the laws of the jurisdiction in which OPTILINE Agency is officially registered, without regard to conflict of law principles. Any international disputes shall be settled via binding online arbitration.</p>
+
+        <h2>Electronic Execution & Acceptance</h2>
+        <p>This agreement may be executed electronically. The Marketer's digital signature, explicit check-box consent on the Agency's platform, or the deliberate initiation of promotional activities utilizing the Agency's tracking links constitutes full and legally binding acceptance of all terms herein.</p>
+
+        <h2>Severability</h2>
+        <p>If any provision is found to be unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+        <h2>Waiver</h2>
+        <p>The failure of either party to enforce any provision does not constitute a waiver of that provision or any other provision.</p>
+
+        <h2 class="appendix-title" id="appendix-a">Appendix A: Commission Schedule Reference</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Price</th>
+                    <th>Commission</th>
+                    <th>% of Sale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CORE PACK</td>
+                    <td>$799</td>
+                    <td>$100</td>
+                    <td>12.5%</td>
+                </tr>
+                <tr>
+                    <td>NEXUS PACK</td>
+                    <td>$1,399</td>
+                    <td>$150</td>
+                    <td>10.7%</td>
+                </tr>
+                <tr>
+                    <td>MATRIX PACK</td>
+                    <td>$1,799</td>
+                    <td>$200</td>
+                    <td>11.1%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="appendix-title" id="appendix-b">Appendix B: Marketing Standards Checklist</h2>
+        <ul class="checklist">
+            <li>All promotional materials include accurate delivery timelines (7-21 business days)</li>
+            <li>Client ownership is clearly communicated in all marketing materials</li>
+            <li>No misleading claims about ongoing account management</li>
+            <li>All testimonials and case studies are authentic and verifiable</li>
+            <li>Marketing complies with FTC guidelines and platform policies</li>
+            <li>Agency branding is used only as specified in Article 14</li>
+        </ul>
+
+        <div class="page-break"></div>
+
+        <h1 id="signatures">Signatures</h1>
+        
+        <div class="signature-section">
+            <div class="signature-box" style="padding-bottom: 0.8cm;">
+                <h3 style="margin-bottom: 0.4cm;">OPTILINE AGENCY</h3>
+                <p style="margin-bottom: 0.2cm;"><strong>Authorized Signatory:</strong> ____________________________________</p>
+                <p style="margin-bottom: 0.2cm;"><strong>Title:</strong> __________________________________________________</p>
+                <p style="margin-bottom: 0.6cm;"><strong>Date:</strong> _________________________________________________</p>
+                
+                <p><strong>Authorized Signature:</strong></p>
+                <p style="margin-top: 2cm;">X ____________________________________________________</p>
+            </div>
+            
+            <div class="signature-box" style="padding-bottom: 0.8cm;">
+                <h3 style="margin-bottom: 0.4cm;">SALES PARTNER</h3>
+                <p style="margin-bottom: 0.2cm;"><strong>Full Legal Name:</strong> ________________________________________</p>
+                <p style="margin-bottom: 0.2cm;"><strong>Company Name (if applicable):</strong> __________________________</p>
+                <p style="margin-bottom: 0.2cm;"><strong>Email Address:</strong> ________________________________________</p>
+                <p style="margin-bottom: 0.6cm;"><strong>Date:</strong> _________________________________________________</p>
+                
+                <p><strong>Partner Signature:</strong></p>
+                <p style="margin-top: 2cm;">X ____________________________________________________</p>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" /> <title>Withdrawal Gateway | OPTILINE PSP</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/psp.css" />
+    <link rel="stylesheet" href="../../assets/css/withdraw.css" />
+    <link rel="shortcut icon" href="../../favicon.ico" />
+  </head>
+  <body>
+    <header class="main-header" id="header">
+      <a href="/" class="logo"
+        ><img
+          src="/assets/imgs/optiline-logo.webp"
+          width="150"
+          alt="OPTILINE Logo"
+      /></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/psp/">PSP Dashboard</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </header>
+    <main class="psp-container">
+      <div class="hero-floating-dots">
+        <div
+          class="dot"
+          style="
+            left: 10%;
+            top: 20%;
+            width: 15px;
+            height: 15px;
+            animation-duration: 5s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 80%;
+            top: 10%;
+            width: 20px;
+            height: 20px;
+            animation-duration: 7s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 40%;
+            top: 70%;
+            width: 10px;
+            height: 10px;
+            animation-duration: 4s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 70%;
+            top: 60%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 6s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 25%;
+            top: 5%;
+            width: 12px;
+            height: 12px;
+            animation-duration: 8s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 90%;
+            top: 85%;
+            width: 18px;
+            height: 18px;
+            animation-duration: 5.5s;
+          "
+        ></div>
+        <div
+          class="dot"
+          style="
+            left: 5%;
+            top: 90%;
+            width: 14px;
+            height: 14px;
+            animation-duration: 6.5s;
+          "
+        ></div>
+      </div>
+      <section class="psp-section active">
+        <div class="container psp-hero-layout">
+          <div class="psp-hero-text anim-group withdraw-hero-text">
+            <h1 class="psp-title glow-text">Secure Withdrawal</h1>
+            <p class="psp-sub-phrase">
+              Access your verified commissions and request payouts via Crypto or
+              PayPal Invoice.
+            </p>
+          </div>
+          <div class="login-card anim-group withdraw-card">
+            <div class="card-header">
+              <i class="fas fa-shield-alt login-icon withdraw-icon"></i>
+              <h3>Payout Gateway</h3>
+            </div>
+            <div id="step1-auth" class="login-form">
+              <p class="card-subtitle psp-sub-phrase auth-subtitle">
+                Please verify your identity to access your funds.
+              </p>
+              <div class="input-wrapper">
+                <i class="fas fa-user"></i>
+                <input
+                  type="text"
+                  id="w_pid"
+                  placeholder="Partner ID"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="input-wrapper">
+                <i class="fas fa-lock"></i>
+                <input
+                  type="password"
+                  id="w_ppass"
+                  placeholder="Access Key"
+                  autocomplete="off"
+                />
+                <i
+                  class="fas fa-eye-slash toggle-password"
+                  id="toggleWPass"
+                ></i>
+              </div>
+              <button id="verifyBtn" class="unified-button auth-btn">
+                <span class="btn-txt">Verify & Load Balance</span>
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <p id="authError" class="error-msg"></p>
+            </div>
+            <div id="step2-withdraw" class="login-form withdraw-form-container">
+              <div class="balance-card">
+                <span class="balance-label">Available Balance</span>
+                <h2 id="availableBalance" class="balance-amount">$0.00</h2>
+              </div>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input
+                  type="email"
+                  id="w_email"
+                  placeholder="Your Email (For Confirmation)"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="number"
+                  id="w_amount"
+                  placeholder="Amount to withdraw (Min 100)"
+                  min="100"
+                />
+              </div>
+              <div class="input-wrapper">
+                <i class="fas fa-wallet"></i>
+                <select id="w_method" class="builder-input method-select">
+                  <option value="" disabled selected>
+                    Select Payout Method
+                  </option>
+                  <option value="Crypto">Cryptocurrency (USDT)</option>
+                  <option value="PayPal">PayPal (Invoice Method)</option>
+                </select>
+              </div>
+              <div class="input-wrapper" id="networkWrapper" style="display: none">
+                <i class="fas fa-network-wired"></i>
+                <select id="w_network" class="builder-input network-select">
+                  <option value="" disabled selected>Select Coin & Network</option>
+                  <optgroup label="Tether (USDT)">
+                    <option value="USDT_TRC20">USDT - Tron (TRC20)</option>
+                    <option value="USDT_ERC20">USDT - Ethereum (ERC20)</option>
+                    <option value="USDT_BEP20">USDT - Binance (BEP20)</option>
+                    <option value="USDT_POLYGON">USDT - Polygon</option>
+                  </optgroup>
+                  <optgroup label="USD Coin (USDC)">
+                    <option value="USDC_TRC20">USDC - Tron (TRC20)</option>
+                    <option value="USDC_SOL">USDC - Solana</option>
+                    <option value="USDC_ERC20">USDC - Ethereum (ERC20)</option>
+                  </optgroup>
+                  <optgroup label="Tron (TRX)">
+                    <option value="TRX_NATIVE">TRX - Tron (Native)</option>
+                  </optgroup>
+                  <optgroup label="Bitcoin (BTC)">
+                    <option value="BTC_NATIVE">Bitcoin (Native Network)</option>
+                  </optgroup>
+                  <optgroup label="Ethereum (ETH)">
+                    <option value="ETH_NATIVE">Ethereum (ERC20)</option>
+                  </optgroup>
+                  <optgroup label="Litecoin (LTC)">
+                    <option value="LTC_NATIVE">Litecoin (Native Network)</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div
+                id="smartInfoBox"
+                class="smart-info-box"
+                style="display: none"
+              >
+                <div class="info-row">
+                  <span><i class="fas fa-bolt"></i> Estimated Time:</span>
+                  <strong id="estTime">--</strong>
+                </div>
+                <div class="info-row">
+                  <span id="feeLabel"><i class="fas fa-percentage"></i> Network Fee:</span>
+                  <strong id="estFee">--</strong>
+                </div>
+              </div>
+              <div class="input-wrapper" id="addressWrapper">
+                <i class="fas fa-envelope" id="addressIcon"></i>
+                <input
+                  type="text"
+                  id="w_address"
+                  placeholder="PayPal Email or Wallet Address"
+                />
+              </div>
+              <button
+                id="submitWithdrawBtn"
+                class="unified-button submit-withdraw-btn"
+              >
+                <span class="btn-txt">Confirm Withdrawal</span>
+                <i class="fas fa-check"></i>
+              </button>
+              <p id="withdrawError" class="error-msg"></p>
+            </div>
+            <div id="step3-success" class="success-container">
+              <i class="fas fa-check-circle success-icon-large"></i>
+              <h3 class="glow-text">Request Submitted!</h3>
+              <p class="success-desc">
+                Your withdrawal request has been received securely. If you chose Crypto, funds will be sent within 1-2 hours. If you chose PayPal, check your email shortly for our invoice instructions.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                  margin-top: 25px;
+                "
+              >
+                <a href="/psp/" class="unified-button outline-btn"
+                  >Return to Dashboard</a
+                >
+                <a href="/" class="unified-button outline-btn"
+                  >Return to Home</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="withdraw-security-banner section">
+        <div class="container">
+          <div class="security-banner-inner anim-group">
+            <div class="sec-item">
+              <i class="fas fa-lock"></i> <span>256-Bit SSL Secured</span>
+            </div>
+            <div class="sec-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>Automated Fraud Audit</span>
+            </div>
+            <div class="sec-item">
+              <i class="fas fa-bolt"></i> <span>Lightning Fast Routing</span>
+            </div>
+            <div class="sec-item">
+              <i class="fas fa-user-shield"></i> <span>Identity Verified</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="footer-about">
+          <a href="/" class="logo">
+            <img
+              src="/assets/imgs/optiline-logo.webp"
+              loading="lazy"
+              alt="OPTILINE Agency Logo - Digital Growth Assets"
+            />
+          </a>
+          <p>Elevated growth assets tailored for clarity and strength</p>
+        </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/psp/">PSP Network</a></li>
+            <li><a href="/portfolio/">Portfolio</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Agency</h4>
+          <ul>
+            <li><a href="/blog/">Our Blog</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+            <li><a href="/terms/">Terms Of Service</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/careers/">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2026 OPTILINE. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/withdraw.js"></script>
+    <div id="cookie-banner" class="cookie-banner">
+      <div class="cookie-content">
+        <h3><i class="fas fa-user-shield"></i> Privacy Preference Center</h3>
+        <p>
+          We utilize cookies and essential technologies to engineer a seamless
+          digital experience, optimize site performance, and enable core
+          marketing functions. By clicking "Accept", you acknowledge our use of
+          these technologies.
+        </p>
+        <div class="cookie-buttons">
+          <button id="accept-cookies">Accept All</button>
+          <button id="reject-cookies">Decline</button>
+        </div>
+      </div>
+    </div>
+    <button id="scrollTopBtn" title="Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </body>
+</html>
